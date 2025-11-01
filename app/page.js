@@ -1,103 +1,172 @@
-import Image from "next/image";
+"use client"
+import React, { useRef } from "react"
+import PageWrapper from "./Components/PageWrapper"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ReactLenis } from "@studio-freight/react-lenis"
+import { images } from "../public/assets/assets"
+import { SplitText } from "gsap/SplitText"
 
-export default function Home() {
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText)
+
+export default function Page() {
+  const mainRef = useRef(null)
+  const logoRef = useRef(null)
+
+  useGSAP(() => {
+    // Intro text animation
+    gsap.from(".textH", {
+      y: 200,
+      duration: 1.8,
+      ease: "power4.out",
+      stagger: 0.08,
+      delay: 1,
+    })
+
+    const split = new SplitText(".textL", {
+      type: "words,chars",
+      charsClass: "char++",
+    })
+
+    gsap.from(split.chars, {
+      y: 130,
+      duration: 1,
+      opacity: 0.8,
+      ease: "power4.inOut",
+      rotateY: -90,
+      stagger: 0.02,
+      delay: 1,
+    })
+
+    // ScrollTrigger animation for logo
+    gsap.to(logoRef.current, {
+      scrollTrigger: {
+        trigger: mainRef.current,
+        start: "80% top",  // when hero section leaves the viewport
+        end: "bottom top",
+        scrub: true,
+      },
+      position: "absolute",
+      top: "2vw",
+      left: "2vw",
+      scale: 0.6,
+      color: "#000",
+      ease: "power4.out",
+      transformOrigin: "top left",
+    })
+
+    // Animate border line from 0% width to full width
+    gsap.set(".border-line", { width: "0%" })
+
+    gsap.to(".border-line", {
+      width: "100%",
+      duration: 1.5,
+      ease: "power4.inOut",
+      delay: 1
+    });
+
+  }, { scope: mainRef })
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <ReactLenis root>
+      <div ref={mainRef} className="w-full overflow-hidden min-h-screen main  bg-[#16181B] text-white">
+        <section className="w-sreen h-screen relative flex flex-col px-[2vw]  justify-center">
+          <div className="2xl:w-[19.5vw] 2xl:h-[17vw] xl:w-[19.5vw] xl:h-[18vw] lg:w-[25vw] lg:h-[23vw] md:w-[35vw] md:h-[26vw]  absolute 2xl:top-[5vw] xl:top-[5vw] lg:top-[8vw] md:top-[20vw] left-0 bg-black"></div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+          {/* Hero Text */}
+          <div className="overflow-hidden w-full h-full xl:pt-[5vw]  2xl:pt-[5vw] lg:pt-[8vw]   md:pt-[20vw] pt-[45vw]  text-white mix-blend-difference">
+            <div className="border-wrapper  overflow-hidden">
+              {/* Hero Text */}
+              <div className="overflow-hidden xl:text-[6vw] xl:leading-[6vw] 2xl:text-[5vw] lg:text-[6vw] 2xl:leading-[5vw] lg:leading-[6vw] md:text-[8vw] text-[10vw] leading-[8vw] md:leading-[8vw] ">
+                <h1 style={{ fontFamily: "Alliance-meduim" }} className="textH">
+                  Every Innovation
+                </h1>
+              </div>
+              <div className="overflow-hidden  xl:ml-[25%] lg:ml-[27%] 2xl:ml-[22%] md:ml-[18%] xl:text-[6vw] xl:leading-[6vw] 2xl:text-[5vw] lg:text-[6vw] text-[10vw] leading-[10vw] 2xl:leading-[5vw] lg:leading-[6vw] md:text-[8vw] md:leading-[8vw] ">
+                <h1 style={{ fontFamily: "Alliance-meduim" }} className="textH">
+                  Deserves Thoughtfull
+                </h1>
+              </div>
+              <div className="overflow-hidden xl:text-[6vw] xl:leading-[6vw]  2xl:text-[7vw] 2xl:leading-[7vw] lg:text-[7vw] lg:leading-[7vw] md:text-[10vw] text-[10vw] leading-[8vw] md:leading-[10vw]">
+                <h1 style={{ fontFamily: "Alliance-meduim" }} className="textH">
+                  Developers
+                </h1>
+              </div>
+              <div className="overflow-hidden xl:text-[1.5vw] xl:leading-[2vw] lg:text-[2vw] text-[4vw] leading-[4vw] mt-[5vw] md:mt-[1vw] lg:leading-[2vw] md:text-[3vw] md:leading-[3vw] md:w-[70%] lg:w-[40%] xl:w-[30%]">
+                <p style={{ fontFamily: "Alliance-semibold" }} className="textH">
+                  We turn your vision into meaningful digital experiences.
+                </p>
+              </div>
+
+              <div className="border-line  w-0 h-[1.2px] mt-[2vw] xl:mt-[0.5vw] lg:mt-[1vw]  bg-white"></div>
+            </div>
+          </div>
+
+
+          {/* NR Studio + Image */}
+          <div className="overflow-full  w-screen h-full relative px-[5vw]">
+            <div className="overflow-hidden xl:text-[2vw] 2xl:text-[1.5vw] mt-[1vw] text-[4vw] lg:text-[2vw] lg:leading-[3vw] flex items-end justify-start text-end xl:leading-[2vw]">
+              <p
+                className="max-w-2xl md:ml-[50%] text-end font-[Alliance-meduim]"
+              >
+                Crafting intuitive, human-focused interfaces — from pixels to backend logic
+              </p>
+            </div>
+
+
+          </div>
+        </section>
+
+        <section className="w-screen h-full px-[5vw] md:px-[2vw] pt-[7vw]">
+          <div className="overflow-hidden xl:text-[8vw] text-[12vw] leading-[11vw] lg:text-[8vw] lg:leading-[7.5vw] md:w-[75%] xl:leading-[7vw] uppercase">
+            <h1
+              style={{ fontStretch: "85%" }}
+              className="font-[dbsharp] font-bold"
+            >
+              Focused Design & Development
+            </h1>
+          </div>
+
+          <div className="grid md:grid-cols-12 grid-cols-1 gap-4 pt-[5vw] w-full h-full">
+            <div className="w-full h-full col-start-1 md:col-span-5 xl:col-span-4">
+              <div className="overflow-hidden xl:text-[1.5vw] text-[4vw] leading-[4vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[2vw]">
+                <p style={{ fontFamily: "MyFont2" }} className="text-white/70">
+                  At <span style={{fontStretch:"75%"}} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we craft purposeful digital experiences that combine strategic thinking with refined design and technology. Our approach ensures that every interaction feels intentional, engaging, and seamlessly functional.
+                </p>
+              </div>
+
+              <div className="overflow-hidden xl:text-[1.5vw]  text-[4vw] mt-[5vw] leading-[4vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[2vw]">
+                <p style={{ fontFamily: "MyFont2" }} className="text-white/70">
+                  From the earliest stages of collaboration, we maintain open, transparent communication—aligning creative vision with business goals. Our team remains committed to providing guidance and technical support long after project delivery.
+                </p>
+              </div>
+
+              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] leading-[4vw] text-white/70 lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
+                <p style={{ fontFamily: "MyFont2" }}>
+                  We work in close partnership with designers, developers, and QA specialists to ensure precision and harmony at every stage. The result is a final product that not only meets expectations—but elevates them through design clarity, performance, and purpose.
+                </p>
+              </div>
+            </div>
+
+            <div className="md:col-start-6 flex md:col-span-7 items-start justify-start">
+              <div className="md:w-[80vw] md:h-[40vw] w-[90vw] h-auto overflow-hidden">
+                <img
+                  className="w-full h-full object-center object-cover"
+                  loading="lazy"
+                  src={images.mainbanner1.src}
+                  alt="NR Studios team working on digital experience design"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-full h-screen pt-[7vw]">
+
+
+        </section>
+      </div>
+    </ReactLenis>
+  )
 }
