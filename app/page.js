@@ -132,7 +132,7 @@ export default function Page() {
             <div className="w-full h-full col-start-1 md:col-span-5 xl:col-span-4">
               <div className="overflow-hidden xl:text-[1.5vw] text-[4vw] leading-[4vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[2vw]">
                 <p style={{ fontFamily: "MyFont2" }} className="text-white/70">
-                  At <span style={{fontStretch:"75%"}} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we craft purposeful digital experiences that combine strategic thinking with refined design and technology. Our approach ensures that every interaction feels intentional, engaging, and seamlessly functional.
+                  At <span style={{ fontStretch: "75%" }} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we craft purposeful digital experiences that combine strategic thinking with refined design and technology. Our approach ensures that every interaction feels intentional, engaging, and seamlessly functional.
                 </p>
               </div>
 
@@ -162,9 +162,48 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="w-full h-screen pt-[7vw]">
+        <section className="w-screen h-full px-[5vw] md:px-[2vw] pt-[7vw]">
+          <div className="overflow-hidden xl:text-[8vw] text-[12vw] leading-[11vw] lg:text-[8vw] lg:leading-[7.5vw] md:w-[75%] xl:leading-[7vw] uppercase">
+            <h1
+              style={{ fontStretch: "85%" }}
+              className="font-[dbsharp] font-bold"
+            >
+              Focused Design & Development
+            </h1>
+          </div>
 
+          <div className="grid md:grid-cols-12 grid-cols-1 gap-4 pt-[5vw] w-full h-full">
+            <div className="w-full h-full col-start-1 md:col-span-5 xl:col-span-4">
+              <div className="overflow-hidden xl:text-[1.5vw] text-[4vw] leading-[4vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[2vw]">
+                <p style={{ fontFamily: "MyFont2" }} className="text-white/70">
+                  At <span style={{ fontStretch: "75%" }} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we craft purposeful digital experiences that combine strategic thinking with refined design and technology. Our approach ensures that every interaction feels intentional, engaging, and seamlessly functional.
+                </p>
+              </div>
 
+              <div className="overflow-hidden xl:text-[1.5vw]  text-[4vw] mt-[5vw] leading-[4vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[2vw]">
+                <p style={{ fontFamily: "MyFont2" }} className="text-white/70">
+                  From the earliest stages of collaboration, we maintain open, transparent communication—aligning creative vision with business goals. Our team remains committed to providing guidance and technical support long after project delivery.
+                </p>
+              </div>
+
+              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] leading-[4vw] text-white/70 lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
+                <p style={{ fontFamily: "MyFont2" }}>
+                  We work in close partnership with designers, developers, and QA specialists to ensure precision and harmony at every stage. The result is a final product that not only meets expectations—but elevates them through design clarity, performance, and purpose.
+                </p>
+              </div>
+            </div>
+
+            <div className="md:col-start-6 flex md:col-span-7 items-start justify-start">
+              <div className="md:w-[80vw] md:h-[40vw] w-[90vw] h-auto overflow-hidden">
+                <img
+                  className="w-full h-full object-center object-cover"
+                  loading="lazy"
+                  src={images.mainbanner1.src}
+                  alt="NR Studios team working on digital experience design"
+                />
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </ReactLenis>
