@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react"
 import { FaArrowRight } from "react-icons/fa"
 import { ArrowBigRight, ArrowRight } from "lucide-react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import TextY from "../Components/TextY"
 gsap.registerPlugin(SplitText, ScrollTrigger)
 
 const Page = () => {
@@ -58,6 +59,23 @@ const Page = () => {
         trigger: textRef.current,
         start: "top 95%",
       },
+    })
+
+    charSplit2.chars.forEach((word) => {
+      const wrapper = document.createElement("span")
+      wrapper.classList.add("inline-block", "overflow-hidden")
+      word.parentNode.insertBefore(wrapper, word)
+      wrapper.appendChild(word)
+    })
+
+    // Animate only when scrolled into view
+    gsap.from(charSplit2.chars, {
+      y: 130,
+      delay: 1,
+      duration: 1.8,
+      stagger: 0.015,
+      ease: "power4.inOut",
+
     })
 
     imageDiv.current.onmouseenter = () => {
@@ -253,7 +271,7 @@ const Page = () => {
                   <h1 style={{ fontStretch: "75%" }} className="text-[11vw] will-change-transform leading-[11vw] textA xl:text-[8vw] 2xl:text-[7.5vw] md:text-[8vw] md:leading-[7vw] lg:text-[8vw] lg:leading-[7.5vw] xl:leading-[6vw] font-[dbsharp] font-bold " > A self-owned</h1>
                 </div>
                 <div className="overflow-hidden">
-                  <h1 style={{ fontStretch: "75%" }} className="text-[8vw] will-change-transform leading-[7vw] textA xl:text-[8vw] md:text-[8vw] 2xl:text-[7.5vw] xl:leading-[7vw] md:leading-[7vw] lg:text-[7vw] lg:leading-[6vw] font-[dbsharp] font-bold " > well-driven creative web Agency </h1>
+                  <h1 style={{ fontStretch: "75%" }} className="text-[8vw] will-change-transform leading-[7vw] textA xl:text-[8vw] md:text-[8vw] 2xl:text-[7.5vw] xl:leading-[6vw] md:leading-[7vw] lg:text-[7vw] lg:leading-[6vw] font-[dbsharp] font-bold " > well-driven creative web Agency </h1>
                 </div>
               </div>
 
@@ -273,9 +291,11 @@ const Page = () => {
                 </h1>
               </div>
               <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
-                <p className="text-base sm:text-lg  font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] 2xl:text-[1.6vw] 2xl:leading-[1.5vw] text-white/80 ">
-                  At <span style={{ fontStretch: "75%" }} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we bring ideas to life through powerful, responsive, and beautifully designed websites. We're a creative web studio passionate about crafting digital experiences that not only look great but also deliver real results.
-                </p>
+                <TextY>
+                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                    At <span style={{ fontStretch: "75%" }} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we bring ideas to life through powerful, responsive, and beautifully designed websites. We're a creative web studio passionate about crafting digital experiences that not only look great but also deliver real results.
+                  </p>
+                </TextY>
               </div>
             </div>
 
@@ -285,9 +305,11 @@ const Page = () => {
                 </h1>
               </div>
               <div className="md:col-start-6 md:col-span-6  md:border-b border-gray-200">
-                <p className="text-base sm:text-lg  font-[MyFont]  pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] 2xl:text-[1.6vw] 2xl:leading-[1.5vw] text-white/80     ">
-                  We belive in the power of creativity and technology to transform ideas into impactful digital experiences. we focus more on the emotion and story telling experience to connect, we belive that every innovation need right and toughtul impactfull team and that we are the right to choose
-                </p>
+                <TextY>
+                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                    We belive in the power of creativity and technology to transform ideas into impactful digital experiences. we focus more on the emotion and story telling experience to connect, we belive that every innovation need right and toughtul impactfull team and that we are the right to choose
+                  </p>
+                </TextY>
               </div>
             </div>
 
@@ -297,9 +319,11 @@ const Page = () => {
                 </h1>
               </div>
               <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
-                <p className="text-base sm:text-lg  font-[MyFont] text-[4.5vw] leading-[4.5vw] pb-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]    ">
-                  Our team of skilled designers, developers, and strategists work closely with clients to understand their vision and goals. We believe that a great website is more than just aesthetics; it's about creating an engaging user experience that drives conversions and builds brand loyalty.
-                </p>
+                <TextY>
+                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                    Our team of skilled designers, developers, and strategists work closely with clients to understand their vision and goals. We believe that a great website is more than just aesthetics; it's about creating an engaging user experience that drives conversions and builds brand loyalty.
+                  </p>
+                </TextY>
               </div>
             </div>
 
@@ -309,10 +333,12 @@ const Page = () => {
                 </h1>
               </div>
               <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
-                <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
-                  We collaborate with startups, brands, and creators to craft tailor-made web solutions that tell their story and drive real impact.
-                  From clean portfolio sites to complete web applications, we build with purpose, precision, and passion.
-                </p>
+                <TextY>
+                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                    We collaborate with startups, brands, and creators to craft tailor-made web solutions that tell their story and drive real impact.
+                    From clean portfolio sites to complete web applications, we build with purpose, precision, and passion.
+                  </p>
+                </TextY>
               </div>
             </div>
           </div>
@@ -341,21 +367,25 @@ const Page = () => {
                 </h1>
 
 
-                <p className="text-base sm:text-lg pt-[5vw] font-[MyFont2] text-[5vw] max-w-md leading-[4vw]  md:text-[3vw] md:leading-[3vw] lg:text-[2vw] lg:leading-[2vw] xl:text-[1.8vw] text-white/80 xl:leading-[2vw]    ">
-                  Our 7-stage Agile flow blends design principles with development precision. We build in cycles of clarity and collaboration — keeping your vision alive at every step.
-                </p>
+                <TextY>
+                  <p className="text-base sm:text-lg pt-[5vw] font-[MyFont2] text-[5vw] max-w-md leading-[4vw]  md:text-[3vw] md:leading-[3vw] lg:text-[2vw] lg:leading-[2vw] xl:text-[1.8vw] text-white/80 xl:leading-[2vw]    ">
+                    Our 7-stage Agile flow blends design principles with development precision. We build in cycles of clarity and collaboration — keeping your vision alive at every step.
+                  </p>
+                </TextY>
 
                 <div className="xl:text-[1vw] lg:text-[1.5vw] md:text-[2vw] text-[4vw] md:mt-[2vw] mt-[5vw] ">
                   <h1 className="text-white/50 border-b w-[30%] md:w-[30%] xl:w-[25%]"> (Our Process)</h1>
                 </div>
 
-                <div className="overflow-hidden  w-full">
-                  {[" Concept & Requirement Gathering", " Sprint Planning", " Design & Development", "Testing & Quality Assurance", " Sprint Review & Feedback", " Deployment & Release", " User Feedback & Iteration"].map((items, id) => (
-                    <div key={id} className="border-b border-gray-200/50 max-w-md">
-                      <h1 className="xl:text-[1.2vw] lg:text-[1.5vw] md:text-[1.8vw] text-[4.5vw] py-2"><span className="text-white/60 text-[3vw] md:text-[1.2vw]">({id + 1})</span> &nbsp; {items}</h1>
-                    </div>
-                  ))}
-                </div>
+                <TextY>
+                  <div className="overflow-hidden  w-full">
+                    {[" Concept & Requirement Gathering", " Sprint Planning", " Design & Development", "Testing & Quality Assurance", " Sprint Review & Feedback", " Deployment & Release", " User Feedback & Iteration"].map((items, id) => (
+                      <div key={id} className="border-b border-gray-200/50 max-w-md">
+                        <h1 className="xl:text-[1.2vw] lg:text-[1.5vw] md:text-[1.8vw] text-[4.5vw] py-2"><span className="text-white/60 text-[3vw] md:text-[1.2vw]">({id + 1})</span> &nbsp; {items}</h1>
+                      </div>
+                    ))}
+                  </div>
+                </TextY>
                 <div className="overflow-hidden md:mt-[2vw] mt-[5vw]">
                   <button ref={button} className="relative lg:w-[70%] md:w-[75%] w-[70%] xl:w-[50%] h-[45px] md:h-[51px]  border border-white rounded-full font-[dbsharp] font-semibold overflow-hidden uppercase tracking-wider">
                     <span ref={hoverFill} className="absolute w-[30px] h-[30px] bg-white inset-0 rounded-full will-change-transform scale-0"></span>
@@ -383,9 +413,11 @@ const Page = () => {
               </h1>
             </div>
             <div className="md:col-start-6 md:col-span-6 border-b border-gray-200 ">
-              <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4vw] leading-[4vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
-                We craft digital experiences that combine creativity with precision. From designing intuitive UI/UX and developing custom web solutions to deploying scalable full-stack applications, we turn ideas into high-performing, visually stunning websites that drive real results.
-              </p>
+              <TextY>
+                <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4vw] leading-[4vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  We craft digital experiences that combine creativity with precision. From designing intuitive UI/UX and developing custom web solutions to deploying scalable full-stack applications, we turn ideas into high-performing, visually stunning websites that drive real results.
+                </p>
+              </TextY>
             </div>
           </div>
           <div className="overflow-hidden px-[2vw] grid grid-cols-1 md:grid-cols-12 gap-4 mt-[5vw]">
@@ -414,9 +446,11 @@ const Page = () => {
               </h1>
             </div>
             <div className="md:col-start-1 md:col-span-6 border-b border-gray-200 ">
-              <p className="text-base sm:text-lg font-[MyFont]  pb-[1vw] text-[5vw] leading-[5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
-                At our studio, creativity meets precision. We’re a team of passionate developers and designers who believe every digital experience should feel as good as it looks. From crafting seamless UI/UX flows to building powerful full-stack applications, we handle every step with care — design, development, testing, and deployment.
-              </p>
+              <TextY>
+                <p className="text-base sm:text-lg font-[MyFont]  pb-[1vw] text-[5vw] leading-[5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  At our studio, creativity meets precision. We’re a team of passionate developers and designers who believe every digital experience should feel as good as it looks. From crafting seamless UI/UX flows to building powerful full-stack applications, we handle every step with care — design, development, testing, and deployment.
+                </p>
+              </TextY>
             </div>
           </div>
         </section>
@@ -443,7 +477,9 @@ const Page = () => {
 
                     <h2 style={{ fontStretch: "75%" }} className="text-[8vw] leading-[8vw] md:text-[3vw] font-bold font-[dbsharp] mb-4"><span className="text-white/50 text-[3vw] xl:text-[1vw]">({ind + 1})</span> &nbsp;{member.name}</h2>
                     <p className="text-[4vw] md:text-[1.2vw] text-white font-[Helvetica] mb-4 flex items-center justify-center">{member.role} <ArrowRight className="-rotate-45" /></p>
-                    <p className="text-[3.5vw] leading-[3.5vw] md:text-[1.4vw] md:leading-[1.5vw] font-[Helvetica] text-white/60">{member.about}</p>
+                    <TextY>
+                      <p className="text-[3.5vw] leading-[3.5vw] md:text-[1.4vw] md:leading-[1.5vw] font-[Helvetica] text-white/60">{member.about}</p>
+                    </TextY>
                   </div>
                 </div>
               </div>

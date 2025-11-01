@@ -26,11 +26,11 @@ const Page = () => {
                         </div>
                     </div>
                     <div className="grid grid-cols-6 md:grid-cols-12 w-full h-full gap-4 ">
-                        <div className="col-span-4 col-start-1 md:col-span-7 w-full h-[220px] md:h-[900px]">
-                            <img src={images.processBanner.src} className="w-full h-full object-center object-cover " alt="" />
+                        <div className="col-span-4 col-start-1 md:col-span-7 w-full h-[220px] md:h-[740px]">
+                            <img src={images.processBanner.src} className="w-full h-full object-right object-cover " alt="" />
                         </div>
                         <div className="col-start-4 col-span-3 md:col-start-9 md:col-span-4 w-full h-[150px] md:h-[400px]">
-                            <img src={images.mainbanner1.src} className="w-full h-full object-cover " alt="" />
+                            <img src={images.mainbanner1.src} className="w-full h-full object-cover object-right " alt="" />
                         </div>
                     </div>
                 </section>
