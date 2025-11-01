@@ -11,12 +11,16 @@ import Rohith from './Rohith.jpg'
 import varshit from './varshit.png'
 
 import mainbanner1 from './mainbanner.png'
+import processBanner from './processBanner.png'
+import twoBanner from './twoBanner.png'
 
 export const images = {
   mainbanner,
   dev,
   mockup,
-  mainbanner1
+  mainbanner1,
+  processBanner,
+  twoBanner
 }
 
 export const profile =[

@@ -4,10 +4,12 @@ import Navbar from "./Components/Navbar";
 import { ViewTransitions } from "next-view-transitions";
 
 
-
 export const metadata = {
   title: "NR Studio",
   description: "Every Innovation deserves thoughtful Developers",
+  icons: {
+    icon: "/Logo.png", // ✅ correct favicon path
+  },
 };
 
 export default function RootLayout({ children }) {

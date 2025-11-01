@@ -34,7 +34,6 @@
   font-display: swap;
 }
 
-
 @font-face {
   font-family: 'Helvetica';
   src: url('/fonts/Helvetica_Now_Display.ttf') format('truetype');
@@ -47,8 +46,26 @@
 }
 
 @font-face {
+  font-family: 'PPNeueMontreal';
+  src: url('/fonts/PPNeueMontreal.woff2') format('woff2');
+  font-weight: 100 900;
+  /* correct syntax: space-separated range, no dash */
+  font-stretch: 75% 125%;
+  /* remove quotes and colon spacing */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Alliance-meduim';
   src: url('/fonts/alliance-neuemedium.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'radon';
+  src: url('/fonts/radon.otf') format('otf');
   font-style: normal;
   font-display: swap;
 }
@@ -79,7 +96,7 @@
 /* Use globally */
 body {
   font-family: 'MyFont', sans-serif;
-  background: black;
+  background: #16181B;
   color: var(--foreground);
   margin: 0;
   padding: 0;

@@ -199,7 +199,7 @@ const Page = () => {
         scrollTrigger: {
           trigger: card,
           start: "top top",
-          scrub:true,
+          scrub: true,
           pin: true,
           pinSpacing: false,
           endTrigger: cards[cards.length - 1],
@@ -207,19 +207,19 @@ const Page = () => {
         },
       });
 
-      if(i < cards.length - 1 ){
+      if (i < cards.length - 1) {
         ScrollTrigger.create({
-          trigger:cards[i + 1],
-          start:"top bottom",
-          end:"top top ",
-          onUpdate:(self)=>{
+          trigger: cards[i + 1],
+          start: "top bottom",
+          end: "top top ",
+          onUpdate: (self) => {
             const progress = self.progress;
-            const scale= 1-progress * 0.15;
+            const scale = 1 - progress * 0.15;
             const afterOpacity = progress;
 
-            gsap.set(card,{
-              scale:scale,
-              "afterOpacity":afterOpacity,
+            gsap.set(card, {
+              scale: scale,
+              "afterOpacity": afterOpacity,
             })
           }
         })
@@ -234,9 +234,9 @@ const Page = () => {
   return (
     <ReactLenis root>
       {/* Full Page Section */}
-      <div className="bg-[#16181B] text-white  overflow-hidden">
-        <section className="bg-white  text-black w-screen h-full pt-[15vw] py-[10vw] flex items-center justify-center px-[5vw]">
-          <div className="w-full  py-10 px-[2vw] overflow-hidden">
+      <div className="bg-[#16181B] text-white w-full min-h-screen  mx-auto overflow-x-hidden">
+        <section className="bg-white  text-black w-screen h-full pt-[15vw] py-[10vw] px-[2vw] flex items-center justify-center ">
+          <div className="w-full  py-10  overflow-hidden">
             <div className="flex flex-col gap-[1vw]">
 
               <div className="overflow-hidden ">
@@ -261,8 +261,8 @@ const Page = () => {
           </div>
         </section>
 
-        <section className="w-screen min-h-screen mx-[2vw] mt-[5vw] flex items-start justify-start px-[2vw] overflow-hidden">
-          <div className=" w-screen px-[2vw]  ">
+        <section className="w-full px-[2vw] min-h-screen   mt-[5vw] flex items-start justify-start  overflow-hidden">
+          <div className="  ">
             <h1 style={{ fontStretch: "75%" }} className="text-[12vw] leading-[10vw] uppercase sm:text-5xl lg:text-6xl xl:text-[7vw] font-bold font-[dbsharp] ">
               About Us
             </h1>
@@ -319,7 +319,7 @@ const Page = () => {
         </section>
 
 
-        <div className="xl:text-[8vw] text-[11vw] xl:leading-[7vw] mt-[10vw] px-[3vw] font-[dbsharp] text-white/50 leading-[10vw] uppercase font-bold text-center">
+        <div className="w-full px-[2vw] xl:text-[8vw] text-[11vw] xl:leading-[7vw] mt-[10vw]  font-[dbsharp] text-white/50 leading-[10vw] uppercase font-bold text-center">
           <div className="overflow-hidden">
             <h1 ref={textRef} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
               We don’t just  chase <span style={{ fontStretch: "85%" }} className="text-white">attention</span> —
@@ -331,8 +331,8 @@ const Page = () => {
 
 
 
-        <section className="w-screen min-h-screen flex items-start justify-start  px-[5vw] md:px-[2vw] overflow-hidden">
-          <div className=" w-screen  pt-[3vw] ">
+        <section className="w-full min-h-screen px-[2vw] flex items-start justify-start   overflow-hidden">
+          <div className=" pt-[3vw] ">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2   items-start">
               <div className="md:col-start-1 md:col-span-4 border-t border-gray-100/50 pt-[1vw] ">
                 <h1 className=""><span style={{ fontStretch: "75%" }} className="text-white font-semibold tracking-tight  xl:text-[4vw] text-[7vw] leading-[6vw] md:text-[4vw] md:leading-[3vw] lg:text-[3vw] lg:leading-[2.5vw] font-[dbsharp]">NR Studios</span></h1>
@@ -373,7 +373,7 @@ const Page = () => {
         </section>
 
         {/* What we Do?? */}
-        <section className="w-screen min-h-screen px-[5vw] md:px-[2vw]">
+        <section className="w-full min-h-screen px-[2vw] ">
           <div className="overflow-hidden   mt-[5vw]">
             <h1 style={{ fontStretch: "75%" }} className="2xl:text-[8vw] xl:text-[7vw] text-[8vw] uppercase text-end  font-[dbsharp] font-bold lg:text-[4vw]">What We Do??</h1>
           </div>
@@ -404,16 +404,16 @@ const Page = () => {
         </section>
 
         {/* Why Us?? */}
-        <section className="w-screen min-h-screen px-[5vw] md:px-[2vw]">
+        <section className="w-full px-[2vw] min-h-screen ">
           <div className="overflow-hidden  px-[2vw] mt-[5vw]">
-            <h1 style={{ fontStretch: "75%" }}  className="2xl:text-[4vw] uppercase text-end  font-[dbsharp] font-bold text-[8vw] lg:text-[4vw]">Why Us??</h1>
+            <h1 style={{ fontStretch: "75%" }} className="2xl:text-[4vw] uppercase text-end  font-[dbsharp] font-bold text-[8vw] lg:text-[4vw]">Why Us??</h1>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
             <div className="md:col-start-9 md:col-span-2 w-[30%] md:w-full  border-t border-gray-200">
               <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-end font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1vw]  text-white/80 xl:leading-[2vw]"> [Our Work]
               </h1>
             </div>
-            <div className="md:col-start-2 md:col-span-6 border-b border-gray-200 ">
+            <div className="md:col-start-1 md:col-span-6 border-b border-gray-200 ">
               <p className="text-base sm:text-lg font-[MyFont]  pb-[1vw] text-[5vw] leading-[5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
                 At our studio, creativity meets precision. We’re a team of passionate developers and designers who believe every digital experience should feel as good as it looks. From crafting seamless UI/UX flows to building powerful full-stack applications, we handle every step with care — design, development, testing, and deployment.
               </p>
@@ -440,7 +440,7 @@ const Page = () => {
                     />
                   </div>
                   <div className="md:w-1/2 flex flex-col justify-start items-start px-[2vw] mt-[5vw] pb-[2vw] text-white">
-                  
+
                     <h2 style={{ fontStretch: "75%" }} className="text-[8vw] leading-[8vw] md:text-[3vw] font-bold font-[dbsharp] mb-4"><span className="text-white/50 text-[3vw] xl:text-[1vw]">({ind + 1})</span> &nbsp;{member.name}</h2>
                     <p className="text-[4vw] md:text-[1.2vw] text-white font-[Helvetica] mb-4 flex items-center justify-center">{member.role} <ArrowRight className="-rotate-45" /></p>
                     <p className="text-[3.5vw] leading-[3.5vw] md:text-[1.4vw] md:leading-[1.5vw] font-[Helvetica] text-white/60">{member.about}</p>

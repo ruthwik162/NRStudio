@@ -89,7 +89,7 @@ const Navbar = () => {
         width: 50,
         height: 50,
         scale: 10,
-        duration: 0.8,
+        duration: 1.5,
         ease: "power4.out",
       });
       gsap.to(arrowEl, { x: 10, duration: 0.5, ease: "power4.inOut" });
@@ -100,7 +100,7 @@ const Navbar = () => {
         width: 0,
         height: 0,
         scale: 0,
-        duration: 0.6,
+        duration: 1,
         ease: "power4.inOut",
       });
       gsap.to(arrowEl, { x: 0, duration: 0.5, ease: "power4.inOut" });
@@ -166,7 +166,7 @@ const Navbar = () => {
       >
         <div
           style={{ fontStretch: "75%" }}
-          className="w-full h-full flex items-start mx-[5vw] md:mx-[2vw] font-[Helvetica] uppercase font-thin xl:text-[4.5vw] xl:leading-[4vw] text-[11vw] leading-[10.5vw] md:text-[8vw] md:leading-[7.5vw] lg:text-[7vw] lg:leading-[6.5vw]  justify-center flex-col"
+          className="w-full h-full flex items-start mx-[5vw] md:mx-[2vw] font-[Helvetica] uppercase font-thin xl:text-[4.5vw] xl:leading-[4vw] text-[11vw] leading-[10.5vw] md:text-[8vw] md:leading-[7.5vw] lg:text-[7vw] lg:leading-[6.5vw] space-y-2  justify-center flex-col"
         >
           {links.map((link, i) => (
             <div
@@ -176,7 +176,7 @@ const Navbar = () => {
               onMouseLeave={() => handleMouseLeave(i)}
             >
               <HoverText>
-                <h1 className="overflow-hidden">
+                <h1 className="overflow-hidden ">
                   <a
                     onClick={(e) => {
                       e.preventDefault();
