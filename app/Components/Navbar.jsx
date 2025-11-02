@@ -26,84 +26,72 @@ const Navbar = () => {
     { name: "Process", href: "/process" },
   ];
 
-  // ✅ Animate overlay open/close (bottom → top)
+  // ✅ Smooth 60fps animation using will-change and GPU acceleration
   useEffect(() => {
+    if (!navRef.current) return;
+
+    navRef.current.style.willChange = "clip-path, transform, opacity";
+    gsap.set(".textN", { willChange: "transform, opacity" });
+
     if (menuOpen) {
-      // open from bottom
       gsap.to(navRef.current, {
         clipPath: "inset(0% 0% 0% 0%)",
-        duration: 1.2,
+        duration: 1.05,
         ease: "power4.inOut",
         pointerEvents: "auto",
+        force3D: true,
       });
 
-      // text slide-up reveal
       gsap.fromTo(
         ".textN",
-        { y: 190,  },
+        { y: 300, opacity: 1, force3D: true },
         {
           y: 0,
-          
-          duration: 1.2,
+          opacity: 1,
+          duration: 1,
           ease: "power4.out",
-          stagger: 0.04,
-          delay: 0.3,
+          stagger: 0.03,
+          delay: 0.32,
         }
       );
     } else {
-      // close upwards
       gsap.to(navRef.current, {
         clipPath: "inset(0% 0% 100% 0%)",
-        duration: 1.2,
-        ease: "power4.inOut",
+        duration: 0.6,
+        ease: "power3.inOut",
         pointerEvents: "none",
+        force3D: true,
       });
     }
   }, [menuOpen]);
 
-  // ✅ Button hover fill effect
+  // ✅ Button hover fill (GPU accelerated)
   useGSAP(() => {
     const btn = button2.current;
     const dot = hoverFill2.current;
-    const text = textHover2.current;
     const arrowEl = arrow2.current;
 
-    gsap.set(dot, { width: 0, height: 0, scale: 0, transformOrigin: "center center" });
-    gsap.set(text, { yPercent: 0 });
-    gsap.set(arrowEl, { x: 0 });
+    gsap.set(dot, { width: 0, height: 0, scale: 0, transformOrigin: "center center", willChange: "transform" });
 
     const moveHandler = (e) => {
       const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
       gsap.to(dot, {
-        x,
-        y,
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
         duration: 0.3,
         ease: "power3.out",
+        force3D: true,
       });
     };
 
     const enterHandler = () => {
-      gsap.to(dot, {
-        width: 50,
-        height: 50,
-        scale: 10,
-        duration: 1.5,
-        ease: "power4.out",
-      });
-      gsap.to(arrowEl, { x: 10, duration: 0.5, ease: "power4.inOut" });
+      gsap.to(dot, { width: 50, height: 50, scale: 10, duration: 1.3, ease: "power4.out", force3D: true });
+      gsap.to(arrowEl, { x: 10, duration: 0.4, ease: "power4.out" });
     };
 
     const leaveHandler = () => {
-      gsap.to(dot, {
-        width: 0,
-        height: 0,
-        scale: 0,
-        duration: 1,
-        ease: "power4.inOut",
-      });
-      gsap.to(arrowEl, { x: 0, duration: 0.5, ease: "power4.inOut" });
+      gsap.to(dot, { width: 0, height: 0, scale: 0, duration: 0.9, ease: "power4.inOut", force3D: true });
+      gsap.to(arrowEl, { x: 0, duration: 0.4, ease: "power4.inOut" });
     };
 
     btn.addEventListener("mousemove", moveHandler);
@@ -117,48 +105,34 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleMouseEnter = (index) => {
-    gsap.to(lineRefs.current[index], {
-      scaleX: 1,
-      transformOrigin: "left center",
-      duration: 0.8,
-      ease: "power4.out",
-    });
-  };
+  const handleMouseEnter = (index) =>
+    gsap.to(lineRefs.current[index], { scaleX: 1, transformOrigin: "left", duration: 0.7, ease: "power4.out" });
 
-  const handleMouseLeave = (index) => {
-    gsap.to(lineRefs.current[index], {
-      scaleX: 0,
-      transformOrigin: "right center",
-      duration: 0.8,
-      ease: "power4.out",
-    });
-  };
+  const handleMouseLeave = (index) =>
+    gsap.to(lineRefs.current[index], { scaleX: 0, transformOrigin: "right", duration: 0.7, ease: "power4.inOut" });
 
-  const handleMailEnter = () => {
-    gsap.to(lineMail.current, {
-      scaleX: 1,
-      transformOrigin: "left center",
-      duration: 0.8,
-      ease: "power3.out",
-    });
-  };
+  const handleMailEnter = () =>
+    gsap.to(lineMail.current, { scaleX: 1, transformOrigin: "left", duration: 0.6, ease: "power3.out" });
 
-  const handleMailLeave = () => {
-    gsap.to(lineMail.current, {
-      scaleX: 0,
-      transformOrigin: "right center",
-      duration: 0.8,
-      ease: "power3.inOut",
+  const handleMailLeave = () =>
+    gsap.to(lineMail.current, { scaleX: 0, transformOrigin: "right", duration: 0.6, ease: "power3.inOut" });
+
+  useEffect(() => {
+    // Wait until all web fonts are fully loaded
+    document.fonts.ready.then(() => {
+      // Safe to start GSAP, transitions, etc.
+      console.log("Fonts are loaded!");
     });
-  };
+  }, []);
+
+
 
   return (
     <>
       {/* ✅ Fullscreen Menu Overlay */}
       <div
         ref={navRef}
-        className="w-screen h-screen fixed top-0 left-0 bg-black text-white z-40 flex items-center justify-center"
+        className="w-screen h-screen fixed top-0 left-0  flex-col  bg-black text-white z-40 flex items-start justify-start"
         style={{
           clipPath: "inset(0% 0% 100% 0%)",
           pointerEvents: "none",
@@ -166,7 +140,7 @@ const Navbar = () => {
       >
         <div
           style={{ fontStretch: "75%" }}
-          className="w-full h-full flex items-start mx-[5vw] md:mx-[2vw] font-[Helvetica] uppercase font-thin xl:text-[4.5vw] xl:leading-[4vw] text-[11vw] leading-[10.5vw] md:text-[8vw] md:leading-[7.5vw] lg:text-[7vw] lg:leading-[6.5vw] space-y-2  justify-center flex-col"
+          className="md:w-1/2 h-full flex-col  flex items-start mx-[5vw] md:mx-[2vw] font-[PPNeueMontreal] font-bold uppercase  xl:text-[4.5vw] xl:leading-[4vw] text-[11vw] leading-[10.5vw] md:text-[8vw] md:leading-[7.5vw] lg:text-[7vw] lg:leading-[6.5vw] space-y-2  justify-center "
         >
           {links.map((link, i) => (
             <div
@@ -193,6 +167,23 @@ const Navbar = () => {
             </div>
           ))}
         </div>
+        <div className="mt-[6vw] md:mt-[3vw] text-[4vw] font-[PPNeueMontreal] font-semibold md:text-[1.2vw]  mx-[5vw] tracking-tight text-gray-300 space-y-2">
+          <p className="opacity-80">Get in Touch</p>
+          <div className="flex  flex-col overflow-hidden group uppercase">
+            <div className="overflow-hidden">
+              <a href="mailto:hello@nrstudios.in" className="hover:text-white textN transition">hello@nrstudios.in</a>
+            </div>
+            <div className="overflow-hidden">
+              <a href="https://instagram.com/nrstudios" target="_blank" className="hover:text-white textN transition">Instagram</a>
+            </div>
+            <div className="overflow-hidden">
+              <a href="https://dribbble.com/nrstudios" target="_blank" className="hover:text-white textN transition">Dribbble</a>
+            </div>
+            <div className="overflow-hidden">
+              <a href="https://linkedin.com/company/nrstudios" target="_blank" className="hover:text-white textN transition">LinkedIn</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ✅ Top Navbar */}
@@ -212,7 +203,7 @@ const Navbar = () => {
             href="/"
           >
             <HoverText>
-              <h1>NR Studio©</h1>
+              <h1>NR.Studio©</h1>
             </HoverText>
           </Link>
         </div>
@@ -236,7 +227,7 @@ const Navbar = () => {
               onClick={() => setMenuOpen(!menuOpen)}
               ref={button2}
               className="relative cursor-pointer w-[100px] h-[35px] md:w-[120px] md:h-[41px] border border-white rounded-full font-[dbsharp] font-semibold overflow-hidden uppercase tracking-wider" >
-              <span  ref={hoverFill2}  className="absolute w-[30px] h-[30px] bg-white inset-0 rounded-full will-change-transform scale-0"></span>
+              <span ref={hoverFill2} className="absolute w-[30px] h-[30px] bg-white inset-0 rounded-full will-change-transform scale-0"></span>
               <span ref={textHover2} className="relative z-10 text-[4vw] md:text-[2.5vw] lg:text-[2vw] xl:text-[1vw] text-white flex items-center justify-center gap-3 mix-blend-difference" >
                 {menuOpen ? "Close" : "Menu"}{" "}
                 <ArrowRight ref={arrow2} strokeWidth={2} className="-rotate-45" />{" "}

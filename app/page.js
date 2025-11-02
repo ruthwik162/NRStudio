@@ -8,15 +8,26 @@ import { ReactLenis } from "@studio-freight/react-lenis"
 import { images } from "../public/assets/assets"
 import { SplitText } from "gsap/SplitText"
 import TextY from "./Components/TextY"
+import { ArrowDown } from "lucide-react"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText)
 
 export default function Page() {
   const mainRef = useRef(null)
-  const logoRef = useRef(null)
+  const logoRef = useRef(null);
+  const hoverRef = useRef(null);
+  const hoverFill = useRef(null);
+  const hoverFill2 = useRef(null);
+  const hoverText = useRef(null);
 
   useGSAP(() => {
-    // Intro text animation
+
+    gsap.ticker.fps(60)
+
+    // GPU acceleration
+    gsap.set("*", { force3D: true, willChange: "transform" })
+
+
     gsap.from(".textH", {
       y: 200,
       duration: 1.8,
@@ -67,12 +78,66 @@ export default function Page() {
       delay: 1
     });
 
+    const hover1 = hoverFill.current;
+    const hover2 = hoverFill2.current;
+    const Text = hoverText.current;
+
+    // Initial setup
+    gsap.set(hover1, { xPercent: 0 })
+    gsap.set(hover2, { xPercent: 300 })
+    gsap.set(Text,{xPercent:-10})
+
+    // Hover enter animation
+    hoverRef.current.addEventListener("mouseenter", () => {
+      gsap.to(Text,{
+        xPercent:10,
+        duration:0.6,
+        ease:"power3.out"
+      })
+      gsap.to(hover1, {
+        xPercent: 100,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+      gsap.to(hover2, {
+        xPercent: 0,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.3,
+      });
+    });
+
+    // Hover leave animation
+    hoverRef.current.addEventListener("mouseleave", () => {
+      gsap.to(Text,{
+        xPercent:-10,
+        duration:0.6,
+        ease:"power3.out"
+      })
+      gsap.to(hover1, {
+        xPercent: 0,
+        duration: 0.6,
+        ease: "power3.inOut",
+      });
+      gsap.to(hover2, {
+        xPercent: -100,
+        duration: 0.6,
+        ease: "power3.inOut",
+        delay: 0.05,
+
+      });
+    });
+
+
+
+
+
   }, { scope: mainRef })
 
   return (
     <ReactLenis root>
       <div ref={mainRef} className="w-full overflow-hidden min-h-screen main  bg-[#16181B] text-white">
-        <section className="w-fill h-screen relative flex flex-col px-[2vw]  justify-center">
+        <section className="w-full h-screen relative flex flex-col px-[2vw] bg-[#BFCCD8]  justify-center">
           <div className="2xl:w-[19.5vw] 2xl:h-[17vw] xl:w-[19.5vw] xl:h-[18vw] lg:w-[25vw] lg:h-[23vw] md:w-[35vw] md:h-[26vw]  absolute 2xl:top-[5vw] xl:top-[5vw] lg:top-[8vw] md:top-[20vw] left-0 bg-black"></div>
 
           {/* Hero Text */}
@@ -105,14 +170,27 @@ export default function Page() {
           </div>
 
 
+
           {/* NR Studio + Image */}
-          <div className="overflow-full  w-screen h-full relative px-[5vw]">
+          <div className="overflow-full  w-full  h-full relative flex flex-col items-end justify-between ">
             <div className="overflow-hidden xl:text-[2vw] 2xl:text-[1.5vw] mt-[1vw] text-[4vw] lg:text-[2vw] lg:leading-[3vw] flex items-end justify-start text-end xl:leading-[2vw]">
               <p
-                className="max-w-2xl md:ml-[50%] text-end font-[Alliance-meduim]"
+                className="max-w-xl  text-end font-[Alliance-meduim]"
               >
                 Crafting intuitive, human-focused interfaces — from pixels to backend logic
               </p>
+            </div>
+            <div className="w-full md:pb-[3vw] px-[5vw] flex items-center justify-between">
+              <div ref={hoverRef} className="relative overflow-hidden cursor-pointer group">
+                <h1 ref={hoverText} className="xl:text-[1.3vw] text-white mix-blend-difference flex items-center justify-center gap-2">
+                  <ArrowDown /> &nbsp; Scroll Down &nbsp; <ArrowDown />
+                </h1>
+                <span ref={hoverFill} className="absolute bottom-0 left-0 w-full h-[2.5px] bg-white  " ></span>
+                <span ref={hoverFill2} className="absolute bottom-0 left-0 w-full h-[2.5px] bg-white "></span>
+              </div>
+
+              <h1 className="text-[1vw]">We are from HYD</h1>
+              <h1 className="text-[1vw]">We are from HYD</h1>
             </div>
 
 
@@ -168,8 +246,13 @@ export default function Page() {
             </div>
           </div>
         </section>
+        <section className="w-full min-h-screen px-[2vw] ">
+          <div className="w-full min-h-screen mt-[2vw] ">
 
-        
+          </div>
+        </section>
+
+
       </div>
     </ReactLenis>
   )

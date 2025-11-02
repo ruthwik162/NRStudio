@@ -454,9 +454,9 @@ const Page = () => {
             </div>
           </div>
         </section>
-        <section className="w-screen min-h-screen flex flex-col mt-[3vw] items-center justify-center relative overflow-hidden">
-          <div style={{ fontStretch: "75%" }} className="our font-bold xl:text-[8vw] xl:leading-[9vw] md:leading-[9vw] lg:text-[8vw] md:text-[8vw] text-[10vw] font-[dbsharp] ">
-            <h1>Our Agents</h1>
+        <section className="w-screen min-h-screen flex flex-col  items-center justify-center relative overflow-hidden">
+          <div style={{ fontStretch: "75%" }} className="our text-center w-[80%] font-bold xl:text-[8vw] xl:leading-[7vw] md:leading-[9vw] lg:text-[8vw] md:text-[8vw] text-[10vw] font-[dbsharp] ">
+            <h1>Meet Our Member Behind Every Pixel</h1>
           </div>
 
           <div ref={container} className=" relative w-full h-[400vh] flex items-center justify-center flex-col bg-white  px-[2vw]">
