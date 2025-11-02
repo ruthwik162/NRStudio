@@ -71,7 +71,7 @@ const Navbar = () => {
     const dot = hoverFill2.current;
     const arrowEl = arrow2.current;
 
-    gsap.set(dot, { width: 0, height: 0, scale: 0, transformOrigin: "center center", willChange: "transform" });
+    gsap.set(dot, { width: 0, height: 0, scale: 0, transformOrigin: "center center", willChange: "transform",force3D: true });
 
     const moveHandler = (e) => {
       const rect = btn.getBoundingClientRect();

@@ -71,10 +71,11 @@ const Page = () => {
     // Animate only when scrolled into view
     gsap.from(charSplit2.chars, {
       y: 130,
-      delay: 1,
-      duration: 1.8,
+      delay: 0.85,
+      duration: 1.6,
       stagger: 0.015,
       ease: "power4.inOut",
+      force3D: true
 
     })
 
@@ -83,6 +84,7 @@ const Page = () => {
         scale: 1.05,
         duration: 0.8,
         ease: "power4.out",
+        force3D: true
       })
     }
 
@@ -91,6 +93,7 @@ const Page = () => {
         scale: 1,
         duration: 0.8,
         ease: "power4.out",
+        force3D: true
       })
     }
 
@@ -110,6 +113,7 @@ const Page = () => {
       scrollTrigger: {
         trigger: textRef.current,
         start: "top 95%",
+        force3D: true
       },
     })
 
@@ -153,6 +157,7 @@ const Page = () => {
         y,
         duration: 0.3,
         ease: "power3.out",
+        force3D: true
       })
     }
 
@@ -163,15 +168,18 @@ const Page = () => {
         scale: 10,
         duration: 0.8,
         ease: "power4.out",
+        force3D: true
       })
       gsap.to(text, {
         duration: 0.5,
         ease: "power4.inOut",
+        force3D: true
       })
       gsap.to(arrowEl, {
         x: 10,
         duration: 0.5,
         ease: "power4.inOut",
+        force3D: true
       })
     }
 
@@ -182,15 +190,18 @@ const Page = () => {
         scale: 0,
         duration: 0.6,
         ease: "power4.inOut",
+        force3D: true
       })
       gsap.to(text, {
         duration: 0.6,
         ease: "power4.inOut",
+        force3D: true
       })
       gsap.to(arrowEl, {
         x: 0,
         duration: 0.5,
         ease: "power4.inOut",
+        force3D: true
       })
     }
 
@@ -214,6 +225,7 @@ const Page = () => {
       const tl = gsap.timeline({
         scale: 0.9, // adjust scale
         ease: "power1.out",
+        force3D: true,
         scrollTrigger: {
           trigger: card,
           start: "top top",
@@ -229,6 +241,7 @@ const Page = () => {
         ScrollTrigger.create({
           trigger: cards[i + 1],
           start: "top bottom",
+          force3D: true,
           end: "top top ",
           onUpdate: (self) => {
             const progress = self.progress;

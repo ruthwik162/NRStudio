@@ -57,12 +57,13 @@ const Page = () => {
     useGSAP(() => {
         const cards = gsap.utils.toArray(".cards");
 
-        gsap.set(cards, { transformOrigin: "center top", scale: 1 });
+        gsap.set(cards, { transformOrigin: "center top", scale: 1,force3D: true });
 
         cards.forEach((card, i) => {
             const tl = gsap.timeline({
                 scale: 0.9, // adjust scale
                 ease: "power3.out",
+                force3D: true,
                 scrollTrigger: {
                     trigger: card,
                     start: "top top",
@@ -81,6 +82,7 @@ const Page = () => {
                     trigger: cards[i + 1],
                     start: "top bottom",
                     end: "top top ",
+                    force3D: true,
                     onUpdate: (self) => {
                         const progress = self.progress;
                         const scale = 1 - progress * 0.15;
@@ -184,14 +186,14 @@ const Page = () => {
                                 </h1>
                             </div>
 
-                            <div className="md:col-start-4 md:col-span-8 gap-3 items-start justify-start">
+                            <div className="md:col-start-4 md:col-span-7 gap-3 items-start justify-start">
                                 <div className="">
                                     <h1 className="text-white  mix-blend-difference uppercase tracking-tight xl:text-[3vw] xl:leading-[3vw] font-bold lg:text-[5vw] lg:leading-[5vw] md:text-[7vw] md:leading-[7vw] text-[8vw] leading-[8vw] mb-3">
                                         {stage.title}
                                     </h1>
                                 </div>
 
-                                <img src={stage.bg} alt={stage.title} className=" w-full h-[300px] md:h-[520px] object-cover mix-blend-normal object-center" />
+                                <img src={stage.bg} alt={stage.title} className=" w-full h-[300px] md:h-[490px] object-cover mix-blend-normal object-center" />
 
                                 <div className="relative z-10 mix-blend-difference mt-[2vw] text-start max-w-2xl">
                                     <TextY>

@@ -33,7 +33,8 @@ export default function Page() {
       duration: 1.8,
       ease: "power4.out",
       stagger: 0.08,
-      delay: 1,
+      delay: 0.85,
+      force3D: true
     })
 
     const split = new SplitText(".textL", {
@@ -49,6 +50,7 @@ export default function Page() {
       rotateY: -90,
       stagger: 0.02,
       delay: 1,
+      force3D: true
     })
 
     // ScrollTrigger animation for logo
@@ -58,6 +60,7 @@ export default function Page() {
         start: "80% top",  // when hero section leaves the viewport
         end: "bottom top",
         scrub: true,
+        force3D: true
       },
       position: "absolute",
       top: "2vw",
@@ -75,7 +78,8 @@ export default function Page() {
       width: "100%",
       duration: 1.5,
       ease: "power4.inOut",
-      delay: 1
+      delay: 1,
+      force3D: true
     });
 
     const hover1 = hoverFill.current;
@@ -92,18 +96,21 @@ export default function Page() {
       gsap.to(Text,{
         xPercent:10,
         duration:0.6,
-        ease:"power3.out"
+        ease:"power3.out",
+        force3D: true
       })
       gsap.to(hover1, {
         xPercent: 100,
         duration: 0.6,
         ease: "power3.out",
+        force3D: true
       });
       gsap.to(hover2, {
         xPercent: 0,
         duration: 0.6,
         ease: "power3.out",
         delay: 0.3,
+        force3D: true
       });
     });
 
@@ -112,18 +119,21 @@ export default function Page() {
       gsap.to(Text,{
         xPercent:-10,
         duration:0.6,
-        ease:"power3.out"
+        ease:"power3.out",
+        force3D: true
       })
       gsap.to(hover1, {
         xPercent: 0,
         duration: 0.6,
         ease: "power3.inOut",
+        force3D: true
       });
       gsap.to(hover2, {
         xPercent: -100,
         duration: 0.6,
         ease: "power3.inOut",
         delay: 0.05,
+        force3D: true
 
       });
     });
