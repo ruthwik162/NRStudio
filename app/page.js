@@ -191,7 +191,7 @@ export default function Page() {
               </div>
               <div className="overflow-hidden  xl:ml-[25%] lg:ml-[27%] 2xl:ml-[22%] md:ml-[18%] xl:text-[6vw] xl:leading-[6vw] 2xl:text-[5vw] lg:text-[6vw] text-[10vw] leading-[10vw] 2xl:leading-[5vw] lg:leading-[6vw] md:text-[8vw] md:leading-[8vw] ">
                 <h1 style={{ fontFamily: "Alliance-meduim" }} className="textH">
-                  Deserves Thoughtfull
+                  Deserves Thoughtful
                 </h1>
               </div>
               <div className="overflow-hidden xl:text-[6vw] xl:leading-[6vw]  2xl:text-[7vw] 2xl:leading-[7vw] lg:text-[7vw] lg:leading-[7vw] md:text-[10vw] text-[10vw] leading-[8vw] md:leading-[10vw]">

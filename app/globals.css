@@ -140,3 +140,16 @@ body {
   will-change: transform, opacity, rotate, scale;
 }
 
+
+
+.preloader {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* progress bar controlled inline, but if you prefer class-based */
+#progress-bar {
+  will-change: width;
+}
