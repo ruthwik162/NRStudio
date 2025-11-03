@@ -22,6 +22,7 @@ export default function Page() {
   const hoverFill2 = useRef(null);
   const hoverText = useRef(null);
   const image = useRef(null);
+  const filterRef = useRef(null);
 
   useGSAP(() => {
 
@@ -111,10 +112,12 @@ export default function Page() {
     });
 
     const img = image.current;
+    const filter = filterRef.current;
 
     // Initial states
     gsap.set(".img", { scale: 1, filter: "blur(0px)", willChange: "transform, filter" });
     gsap.set(".img2", { opacity: 0, scale: 0.8, willChange: "transform, opacity", force3D: true });
+    gsap.set(filter,{opacity:0,force3D:true})
 
     // Hover Enter
     const handleEnter = () => {
@@ -125,11 +128,17 @@ export default function Page() {
         ease: "power4.out",
         force3D: true,
       });
+      gsap.to(filter,{
+        opacity:1,
+        duration:0.4,
+        ease:"power3.out",
+        force3D:true
+      })
       gsap.to(".img2", {
         scale: 1.4,
         opacity: 1,
         duration: 0.4,
-        ease: "power3.out",
+        ease: "expo.inOut",
         force3D: true,
       });
     };
@@ -143,11 +152,17 @@ export default function Page() {
         ease: "power3.out",
         force3D: true,
       });
+      gsap.to(filter,{
+        opacity:0,
+        duration:0.4,
+        ease:"power3.out",
+        force3D:true
+      })
       gsap.to(".img2", {
         scale: 0.8,
         opacity: 0,
         duration: 0.4,
-        ease: "power3.out",
+        ease: "expo.inOut",
         force3D: true,
       });
     };
@@ -291,6 +306,10 @@ export default function Page() {
                       transition: "transform 0.5s ease-out, filter 0.5s ease-out",
                     }}
                   />
+                  
+                  <div ref={filterRef} className="absolute w-full h-full top-0 left-0 bg-black/70">
+
+                  </div>
 
                   {/* Overlay Image */}
                   <img
