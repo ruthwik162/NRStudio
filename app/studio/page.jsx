@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { ReactLenis } from "@studio-freight/react-lenis"
 import { images, profile } from "@/public/assets/assets"
 import gsap from "gsap"
@@ -9,6 +9,7 @@ import { FaArrowRight } from "react-icons/fa"
 import { ArrowBigRight, ArrowRight } from "lucide-react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import TextY from "../Components/TextY"
+import Footer from "../Components/Footer"
 gsap.registerPlugin(SplitText, ScrollTrigger)
 
 const Page = () => {
@@ -22,120 +23,124 @@ const Page = () => {
   const textRef = useRef(null)
   const container = useRef(null);
   useGSAP(() => {
-    const charSplit = new SplitText(".textS", {
-      type: "words,chars",
-      charsClass: "char++",
-    })
-    const charSplit2 = new SplitText(".textA", {
-      type: "words,chars",
-      charsClass: "char++",
-    })
 
-    const our = new SplitText(".our", {
-      type: "words,chars",
-      charsClass: "char++",
-    })
-
-    const split = new SplitText(textRef.current, {
-      type: "words,chars",
-      charsClass: "word++",
-    })
-
-    // Wrap each character in overflow-hidden span
-    split.words.forEach((word) => {
-      const wrapper = document.createElement("span")
-      wrapper.classList.add("inline-block", "overflow-hidden")
-      word.parentNode.insertBefore(wrapper, word)
-      wrapper.appendChild(word)
-    })
-
-    // Animate only when scrolled into view
-    gsap.from(split.words, {
-      y: 130,
-      duration: 1.8,
-      stagger: 0.015,
-      ease: "power4.inOut",
-      scrollTrigger: {
-        trigger: textRef.current,
-        start: "top 95%",
-      },
-    })
-
-    charSplit2.chars.forEach((word) => {
-      const wrapper = document.createElement("span")
-      wrapper.classList.add("inline-block", "overflow-hidden")
-      word.parentNode.insertBefore(wrapper, word)
-      wrapper.appendChild(word)
-    })
-
-    // Animate only when scrolled into view
-    gsap.from(charSplit2.chars, {
-      y: 130,
-      delay: 0.85,
-      duration: 1.6,
-      stagger: 0.015,
-      ease: "power4.inOut",
-      force3D: true
-
-    })
-
-    imageDiv.current.onmouseenter = () => {
-      gsap.to(mainbanner.current, {
-        scale: 1.05,
-        duration: 0.8,
-        ease: "power4.out",
-        force3D: true
+    document.fonts.ready.then(() => {
+      const charSplit = new SplitText(".textS", {
+        type: "words,chars",
+        charsClass: "char++",
       })
-    }
-
-    imageDiv.current.onmouseleave = () => {
-      gsap.to(mainbanner.current, {
-        scale: 1,
-        duration: 0.8,
-        ease: "power4.out",
-        force3D: true
+      const charSplit2 = new SplitText(".textA", {
+        type: "words,chars",
+        charsClass: "char++",
       })
-    }
 
+      const our = new SplitText(".our", {
+        type: "words,chars",
+        charsClass: "char++",
+      })
 
-    charSplit2.words.forEach((word) => {
-      const wrapper = document.createElement("span")
-      wrapper.classList.add("inline-block", "overflow-hidden")
-      word.parentNode.insertBefore(wrapper, word)
-      wrapper.appendChild(word)
-    })
+      const split = new SplitText(textRef.current, {
+        type: "words,chars",
+        charsClass: "word++",
+      })
 
-    gsap.from(our.chars, {
-      y: 130,
-      duration: 1.8,
-      stagger: 0.018,
-      ease: "power4.inOut",
-      scrollTrigger: {
-        trigger: textRef.current,
-        start: "top 95%",
+      // Wrap each character in overflow-hidden span
+      split.words.forEach((word) => {
+        const wrapper = document.createElement("span")
+        wrapper.classList.add("inline-block", "overflow-hidden")
+        word.parentNode.insertBefore(wrapper, word)
+        wrapper.appendChild(word)
+      })
+
+      // Animate only when scrolled into view
+      gsap.from(split.words, {
+        y: 130,
+        duration: 1.8,
+        stagger: 0.015,
+        ease: "power4.inOut",
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: "top 95%",
+        },
+      })
+
+      charSplit2.chars.forEach((word) => {
+        const wrapper = document.createElement("span")
+        wrapper.classList.add("inline-block", "overflow-hidden")
+        word.parentNode.insertBefore(wrapper, word)
+        wrapper.appendChild(word)
+      })
+
+      // Animate only when scrolled into view
+      gsap.from(charSplit2.chars, {
+        y: 130,
+        delay: 0.85,
+        duration: 1.6,
+        stagger: 0.015,
+        ease: "power4.inOut",
         force3D: true
-      },
+
+      })
+
+      imageDiv.current.onmouseenter = () => {
+        gsap.to(mainbanner.current, {
+          scale: 1.05,
+          duration: 0.8,
+          ease: "power4.out",
+          force3D: true
+        })
+      }
+
+      imageDiv.current.onmouseleave = () => {
+        gsap.to(mainbanner.current, {
+          scale: 1,
+          duration: 0.8,
+          ease: "power4.out",
+          force3D: true
+        })
+      }
+
+
+      charSplit2.words.forEach((word) => {
+        const wrapper = document.createElement("span")
+        wrapper.classList.add("inline-block", "overflow-hidden")
+        word.parentNode.insertBefore(wrapper, word)
+        wrapper.appendChild(word)
+      })
+
+      gsap.from(our.chars, {
+        y: 130,
+        duration: 1.8,
+        stagger: 0.018,
+        ease: "power4.inOut",
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: "top 95%",
+          force3D: true
+        },
+      })
+
+      our.chars.forEach((word) => {
+        const wrapper = document.createElement("span")
+        wrapper.classList.add("inline-block", "overflow-hidden")
+        word.parentNode.insertBefore(wrapper, word)
+        wrapper.appendChild(word)
+      })
+
+
+
+      gsap.from(".textF", {
+        y: 100,
+        delay: 1,
+        duration: 2,
+        ease: "power4.inOut",
+      })
+
+
+
     })
 
-    our.chars.forEach((word) => {
-      const wrapper = document.createElement("span")
-      wrapper.classList.add("inline-block", "overflow-hidden")
-      word.parentNode.insertBefore(wrapper, word)
-      wrapper.appendChild(word)
-    })
-
-
-
-    gsap.from(".textF", {
-      y: 100,
-      delay: 1,
-      duration: 2,
-      ease: "power4.inOut",
-    })
-
-
-
-  })
+  });
 
   useGSAP(() => {
     const btn = button.current
@@ -246,11 +251,9 @@ const Page = () => {
           onUpdate: (self) => {
             const progress = self.progress;
             const scale = 1 - progress * 0.15;
-            const afterOpacity = progress;
-
             gsap.set(card, {
               scale: scale,
-              "afterOpacity": afterOpacity,
+              force3D: true,
             })
           }
         })
@@ -260,12 +263,17 @@ const Page = () => {
     });
   }, { scope: container });
 
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+    });
+  }, []);
+
 
 
   return (
     <ReactLenis root>
       {/* Full Page Section */}
-      <div className="bg-[#16181B] text-white w-full min-h-screen  mx-auto overflow-x-hidden">
+      <div className="bg-[#16181B] text-white w-full min-h-screen  mx-auto overflow-hidden">
         <section className="bg-white  text-black w-screen h-full pt-[15vw] py-[10vw] px-[2vw] flex items-center justify-center ">
           <div className="w-full  py-10  overflow-hidden">
             <div className="flex flex-col gap-[1vw]">
@@ -435,15 +443,17 @@ const Page = () => {
           </div>
           <div className="overflow-hidden px-[2vw] grid grid-cols-1 md:grid-cols-12 gap-4 mt-[5vw]">
             <h1 style={{ fontStretch: "75%" }} className="2xl:text-[4vw] text-start uppercase md:col-start-1 md:col-span-3 font-[dbsharp] font-bold tracking-wide text-[8vw] lg:text-[4vw]">Services.</h1>
-            <div className=" md:col-start-6 md:col-span-7 ">
-              {["Custom Website Design & Development", "Responsive and Mobile-First Websites", "E-commerce Solutions", "UI / UX Design ", "Website Maintenance & Optimization"].map((itm, idx) => (
-                <div key={idx} className=" w-full">
-                  <div className="flex items-center border-b border-gray-100/50 py-1 md:py-2 justify-between">
-                    <h1 className="text-[4vw] lg:text-[1.8vw] md:text-[2vw] tracking-tight xl:text-[1.5vw]">{itm}</h1><ArrowRight className="-rotate-45 w-10 h-10 md:w-15 md:h-15" strokeWidth={0.5} />
+            <TextY>
+              <div className=" md:col-start-6 md:col-span-7 ">
+                {["Custom Website Design & Development", "Responsive and Mobile-First Websites", "E-commerce Solutions", "UI / UX Design ", "Website Maintenance & Optimization"].map((itm, idx) => (
+                  <div key={idx} className=" w-full">
+                    <div className="flex items-center border-b border-gray-100/50 py-1 md:py-2 justify-between">
+                      <h1 className="text-[4vw] lg:text-[1.8vw] md:text-[2vw] tracking-tight xl:text-[1.5vw]">{itm}</h1><ArrowRight className="-rotate-45 w-10 h-10 md:w-15 md:h-15" strokeWidth={0.5} />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </TextY>
           </div>
 
         </section>
@@ -478,7 +488,7 @@ const Page = () => {
                 key={ind}
                 className=" cards w-full h-screen flex items-center justify-center mx-auto md:justify-start "
               >
-                <div className="w-full md:w-full xl:h-[90%] lg:h-[80%]  flex flex-col mt-[2vw] items-center mx-auto justify-center md:flex-row bg-[#16181B] p-5 rounded-[0.5vw] overflow-hidden">
+                <div className="w-full md:w-full xl:h-[90%] lg:h-[80%]  flex flex-col mt-[2vw] items-start mx-auto justify-start md:flex-row bg-[#16181B] p-2 md:p-3 rounded-[0.5vw] overflow-hidden">
                   <div className="md:w-1/2 h-1/2 w-full md:h-full  overflow-hidden ">
                     <img
                       src={member.image?.src || "/fallback.jpg"}
@@ -486,9 +496,9 @@ const Page = () => {
                       className="w-full md:w-[75%] rounded-[0.5vw] h-full object-cover object-center"
                     />
                   </div>
-                  <div className="md:w-1/2 flex flex-col justify-start items-start px-[2vw] mt-[5vw] pb-[2vw] text-white">
+                  <div className="md:w-1/2 flex flex-col justify-start items-start px-[2vw] mt-[5vw]  pb-[2vw] text-white">
 
-                    <h2 style={{ fontStretch: "75%" }} className="text-[8vw] leading-[8vw] md:text-[3vw] font-bold font-[dbsharp] mb-4"><span className="text-white/50 text-[3vw] xl:text-[1vw]">({ind + 1})</span> &nbsp;{member.name}</h2>
+                    <h2 style={{ fontStretch: "75%" }} className="text-[8vw] leading-[8vw] md:text-[7vw] lg:text-[5vw] lg:leading-[5vw] xl:text-[4vw] xl:leading-[4vw] font-bold font-[dbsharp] mb-4">{member.name}</h2>
                     <p className="text-[4vw] md:text-[1.2vw] text-white font-[Helvetica] mb-4 flex items-center justify-center">{member.role} <ArrowRight className="-rotate-45" /></p>
                     <TextY>
                       <p className="text-[3.5vw] leading-[3.5vw] md:text-[1.4vw] md:leading-[1.5vw] font-[Helvetica] text-white/60">{member.about}</p>
@@ -499,7 +509,9 @@ const Page = () => {
             ))}
           </div>
         </section>
-        <section className="w-screen h-screen px-[2vw] bg-white"></section>
+        <section className="w-full min-h-screen overflow-hidden md:h-screen">
+          <Footer />
+        </section>
 
       </div>
 

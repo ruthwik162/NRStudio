@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import PageWrapper from "./Components/PageWrapper"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -9,16 +9,19 @@ import { images } from "../public/assets/assets"
 import { SplitText } from "gsap/SplitText"
 import TextY from "./Components/TextY"
 import { ArrowDown } from "lucide-react"
+import Footer from "./Components/Footer"
+import ParallaxImage from "./Components/ParallaxImage"
+import { scale } from "framer-motion"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText)
 
 export default function Page() {
   const mainRef = useRef(null)
-  const logoRef = useRef(null);
   const hoverRef = useRef(null);
   const hoverFill = useRef(null);
   const hoverFill2 = useRef(null);
   const hoverText = useRef(null);
+  const image = useRef(null);
 
   useGSAP(() => {
 
@@ -37,39 +40,8 @@ export default function Page() {
       force3D: true
     })
 
-    const split = new SplitText(".textL", {
-      type: "words,chars",
-      charsClass: "char++",
-    })
 
-    gsap.from(split.chars, {
-      y: 130,
-      duration: 1,
-      opacity: 0.8,
-      ease: "power4.inOut",
-      rotateY: -90,
-      stagger: 0.02,
-      delay: 1,
-      force3D: true
-    })
 
-    // ScrollTrigger animation for logo
-    gsap.to(logoRef.current, {
-      scrollTrigger: {
-        trigger: mainRef.current,
-        start: "80% top",  // when hero section leaves the viewport
-        end: "bottom top",
-        scrub: true,
-        force3D: true
-      },
-      position: "absolute",
-      top: "2vw",
-      left: "2vw",
-      scale: 0.6,
-      color: "#000",
-      ease: "power4.out",
-      transformOrigin: "top left",
-    })
 
     // Animate border line from 0% width to full width
     gsap.set(".border-line", { width: "0%" })
@@ -89,14 +61,14 @@ export default function Page() {
     // Initial setup
     gsap.set(hover1, { xPercent: 0 })
     gsap.set(hover2, { xPercent: 300 })
-    gsap.set(Text,{xPercent:-10})
+    gsap.set(Text, { xPercent: -10 })
 
     // Hover enter animation
     hoverRef.current.addEventListener("mouseenter", () => {
-      gsap.to(Text,{
-        xPercent:10,
-        duration:0.6,
-        ease:"power3.out",
+      gsap.to(Text, {
+        xPercent: 10,
+        duration: 0.6,
+        ease: "power3.out",
         force3D: true
       })
       gsap.to(hover1, {
@@ -116,10 +88,10 @@ export default function Page() {
 
     // Hover leave animation
     hoverRef.current.addEventListener("mouseleave", () => {
-      gsap.to(Text,{
-        xPercent:-10,
-        duration:0.6,
-        ease:"power3.out",
+      gsap.to(Text, {
+        xPercent: -10,
+        duration: 0.6,
+        ease: "power3.out",
         force3D: true
       })
       gsap.to(hover1, {
@@ -138,11 +110,69 @@ export default function Page() {
       });
     });
 
+    const img = image.current;
+
+    // Initial states
+    gsap.set(".img", { scale: 1, filter: "blur(0px)", willChange: "transform, filter" });
+    gsap.set(".img2", { opacity: 0, scale: 0.8, willChange: "transform, opacity", force3D: true });
+
+    // Hover Enter
+    const handleEnter = () => {
+      gsap.to(".img", {
+        scale: 1.05,
+        filter: "blur(6px)",
+        duration: 0.2,
+        ease: "power4.out",
+        force3D: true,
+      });
+      gsap.to(".img2", {
+        scale: 1.4,
+        opacity: 1,
+        duration: 0.4,
+        ease: "power3.out",
+        force3D: true,
+      });
+    };
+
+    // Hover Leave
+    const handleLeave = () => {
+      gsap.to(".img", {
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 0.2,
+        ease: "power3.out",
+        force3D: true,
+      });
+      gsap.to(".img2", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power3.out",
+        force3D: true,
+      });
+    };
+
+    // Event listeners
+    img.addEventListener("mouseenter", handleEnter);
+    img.addEventListener("mouseleave", handleLeave);
+
+    // Cleanup
+    return () => {
+      img.removeEventListener("mouseenter", handleEnter);
+      img.removeEventListener("mouseleave", handleLeave);
+    };
+
+
 
 
 
 
   }, { scope: mainRef })
+
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+    });
+  }, []);
 
   return (
     <ReactLenis root>
@@ -190,17 +220,17 @@ export default function Page() {
                 Crafting intuitive, human-focused interfaces — from pixels to backend logic
               </p>
             </div>
-            <div className="w-full md:pb-[3vw] px-[5vw] flex items-center justify-between">
+            <div className="w-full pb-[3vw] px-[5vw] flex items-center justify-between">
               <div ref={hoverRef} className="relative overflow-hidden cursor-pointer group">
-                <h1 ref={hoverText} className="xl:text-[1.3vw] text-white mix-blend-difference flex items-center justify-center gap-2">
+                <h1 ref={hoverText} className="xl:text-[1.2vw] lg:text-[1.5vw] md:text-[2vw] text-[3vw] text-white mix-blend-difference flex items-center justify-center gap-2">
                   <ArrowDown /> &nbsp; Scroll Down &nbsp; <ArrowDown />
                 </h1>
                 <span ref={hoverFill} className="absolute bottom-0 left-0 w-full h-[2.5px] bg-white  " ></span>
                 <span ref={hoverFill2} className="absolute bottom-0 left-0 w-full h-[2.5px] bg-white "></span>
               </div>
 
-              <h1 className="text-[1vw]">We are from HYD</h1>
-              <h1 className="text-[1vw]">We are from HYD</h1>
+              <h1 className="xl:text-[1vw] lg:text-[1.5vw] md:text-[2vw] text-[3vw]">We are from HYD</h1>
+              <h1 className="xl:text-[1vw] lg:text-[1.5vw] md:text-[2vw] text-[3vw]">We are from HYD</h1>
             </div>
 
 
@@ -219,7 +249,7 @@ export default function Page() {
 
           <div className="grid md:grid-cols-12 grid-cols-1 gap-4 pt-[5vw] w-full h-full">
             <div className="w-full h-full col-start-1 md:col-span-5 xl:col-span-4">
-              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] leading-[4vw] text-white/70 lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
+              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] md:mt-[2vw] leading-[4vw] text-white/70 lg:text-[2.5vw] md:text-[3vw] md:leading-[3vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
                 <TextY>
                   <p style={{ fontFamily: "MyFont2" }} className="text-white/70">
                     At <span style={{ fontStretch: "75%" }} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we craft purposeful digital experiences that combine strategic thinking with refined design and technology. Our approach ensures that every interaction feels intentional, engaging, and seamlessly functional.
@@ -227,7 +257,7 @@ export default function Page() {
                 </TextY>
               </div>
 
-              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] leading-[4vw] text-white/70 lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
+              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] leading-[4vw] text-white/70 lg:text-[2.5vw] md:text-[3vw] md:leading-[3vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
                 <TextY>
                   <p style={{ fontFamily: "MyFont2" }} className="text-white/70">
                     From the earliest stages of collaboration, we maintain open, transparent communication—aligning creative vision with business goals. Our team remains committed to providing guidance and technical support long after project delivery.
@@ -235,7 +265,7 @@ export default function Page() {
                 </TextY>
               </div>
 
-              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] leading-[4vw] text-white/70 lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
+              <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] leading-[4vw] text-white/70 md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
                 <TextY>
                   <p style={{ fontFamily: "MyFont2" }}>
                     We work in close partnership with designers, developers, and QA specialists to ensure precision and harmony at every stage. The result is a final product that not only meets expectations—but elevates them through design clarity, performance, and purpose.
@@ -245,14 +275,35 @@ export default function Page() {
             </div>
 
             <div className="md:col-start-6 flex md:col-span-7 items-start justify-start">
-              <div className="md:w-[80vw] md:h-[40vw] w-[90vw] h-auto overflow-hidden">
-                <img
-                  className="w-full h-full object-center object-cover"
-                  loading="lazy"
-                  src={images.twoBanner.src}
-                  alt="NR Studios team working on digital experience design"
-                />
+              <div className="md:col-start-6 flex md:col-span-7 items-start justify-start">
+                <div
+                  ref={image}
+                  className="relative w-full h-[500px] md:h-[1000px] overflow-hidden flex items-center justify-center"
+                >
+                  {/* Base Image */}
+                  <img
+                    className="img w-full h-full object-cover object-center"
+                    src={images.twoBanner.src}
+                    alt="NR Studios workspace"
+                    loading="lazy"
+                    style={{
+                      transformOrigin: "center center",
+                      transition: "transform 0.5s ease-out, filter 0.5s ease-out",
+                    }}
+                  />
+
+                  {/* Overlay Image */}
+                  <img
+                    src={images.mobileLogo.src}
+                    className="img2 absolute top-1/2 left-1/2 w-[220px] h-[450px] md:w-[320px] md:h-[480px] object-cover -translate-x-1/2 -translate-y-1/2 object-contain pointer-events-none"
+                    alt="NR Studios Logo"
+                    style={{
+                      transformOrigin: "center center",
+                    }}
+                  />
+                </div>
               </div>
+
             </div>
           </div>
         </section>
@@ -260,6 +311,9 @@ export default function Page() {
           <div className="w-full min-h-screen mt-[2vw] ">
 
           </div>
+        </section>
+        <section className="w-full min-h-screen md:h-screen">
+          <Footer />
         </section>
 
 

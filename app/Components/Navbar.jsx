@@ -65,13 +65,23 @@ const Navbar = () => {
     }
   }, [menuOpen]);
 
+  // ✅ Lock scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden"; // Stop scroll
+    } else {
+      document.body.style.overflow = ""; // Restore scroll
+    }
+  }, [menuOpen]);
+
+
   // ✅ Button hover fill (GPU accelerated)
   useGSAP(() => {
     const btn = button2.current;
     const dot = hoverFill2.current;
     const arrowEl = arrow2.current;
 
-    gsap.set(dot, { width: 0, height: 0, scale: 0, transformOrigin: "center center", willChange: "transform",force3D: true });
+    gsap.set(dot, { width: 0, height: 0, scale: 0, transformOrigin: "center center", willChange: "transform", force3D: true });
 
     const moveHandler = (e) => {
       const rect = btn.getBoundingClientRect();
@@ -105,23 +115,9 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleMouseEnter = (index) =>
-    gsap.to(lineRefs.current[index], { scaleX: 1, transformOrigin: "left", duration: 0.7, ease: "power4.out" });
-
-  const handleMouseLeave = (index) =>
-    gsap.to(lineRefs.current[index], { scaleX: 0, transformOrigin: "right", duration: 0.7, ease: "power4.inOut" });
-
-  const handleMailEnter = () =>
-    gsap.to(lineMail.current, { scaleX: 1, transformOrigin: "left", duration: 0.6, ease: "power3.out" });
-
-  const handleMailLeave = () =>
-    gsap.to(lineMail.current, { scaleX: 0, transformOrigin: "right", duration: 0.6, ease: "power3.inOut" });
 
   useEffect(() => {
-    // Wait until all web fonts are fully loaded
     document.fonts.ready.then(() => {
-      // Safe to start GSAP, transitions, etc.
-      console.log("Fonts are loaded!");
     });
   }, []);
 
@@ -146,8 +142,7 @@ const Navbar = () => {
             <div
               key={link.name}
               className="relative tracking-tight overflow-hidden group cursor-pointer"
-              onMouseEnter={() => handleMouseEnter(i)}
-              onMouseLeave={() => handleMouseLeave(i)}
+
             >
               <HoverText>
                 <h1 className="overflow-hidden ">
@@ -189,50 +184,50 @@ const Navbar = () => {
       {/* ✅ Top Navbar */}
       <div
         style={{ fontFamily: "MyFont2" }}
-        className="w-full fixed top-0 text-white mix-blend-difference left-0 p-5 md:p-8 xl:px-10 z-50 flex justify-between items-center"
+        className="w-full fixed top-0 text-white mix-blend-difference left-0 p-5 md:px-8 xl:px-10 z-50 "
       >
-        <div
-          style={{ fontStretch: "75%" }}
-          className="overflow-hidden text-[5vw] uppercase font-[dbsharp] font-semibold sm:text-[3vw] text-white xl:text-[1.5vw] xl:leading-[1.5vw]"
-        >
-          <Link
-            onClick={(e) => {
-              e.preventDefault();
-              router.push("/", { onTransitionReady: pageAnimation });
-            }}
-            href="/"
-          >
-            <HoverText>
-              <h1>NR.Studio©</h1>
-            </HoverText>
-          </Link>
-        </div>
-
-        {/* Right side */}
-        <div className="flex items-center justify-center gap-5">
+        <div className="flex justify-between items-center border-b pb-1">
           <div
-            ref={mail}
-            onMouseEnter={handleMailEnter}
-            onMouseLeave={handleMailLeave}
             style={{ fontStretch: "75%" }}
-            className="relative overflow-hidden md:block hidden xl:text-[1.5vw] xl:leading-[1.5vw] font-semibold font-[dbsharp]" >
-            <HoverText>
-              <h1>HELLO@NRSTUDIOS.IN</h1>
-            </HoverText>
-            <span ref={lineMail} className="absolute left-0 bottom-0 h-[0.1vw] bg-white w-full origin-left scale-x-0" ></span>
+            className="overflow-hidden text-[5vw] uppercase font-[dbsharp] font-semibold sm:text-[3vw] text-white xl:text-[1.5vw] xl:leading-[1.5vw]"
+          >
+            <Link
+              onClick={(e) => {
+                e.preventDefault();
+                router.push("/", { onTransitionReady: pageAnimation });
+              }}
+              href="/"
+            >
+              <HoverText>
+                <h1>NR.Studio©</h1>
+              </HoverText>
+            </Link>
           </div>
 
-          <div className="overflow-hidden button">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              ref={button2}
-              className="relative cursor-pointer w-[100px] h-[35px] md:w-[120px] md:h-[41px] border border-white rounded-full font-[dbsharp] font-semibold overflow-hidden uppercase tracking-wider" >
-              <span ref={hoverFill2} className="absolute w-[30px] h-[30px] bg-white inset-0 rounded-full will-change-transform scale-0"></span>
-              <span ref={textHover2} className="relative z-10 text-[4vw] md:text-[2.5vw] lg:text-[2vw] xl:text-[1vw] text-white flex items-center justify-center gap-3 mix-blend-difference" >
-                {menuOpen ? "Close" : "Menu"}{" "}
-                <ArrowRight ref={arrow2} strokeWidth={2} className="-rotate-45" />{" "}
-              </span>
-            </button>
+          {/* Right side */}
+          <div className="flex items-center justify-center gap-5">
+            <div
+
+              style={{ fontStretch: "75%" }}
+              className="relative overflow-hidden md:block hidden xl:text-[1.5vw] xl:leading-[1.5vw] font-semibold font-[dbsharp]" >
+              <HoverText>
+                <h1>HELLO@NRSTUDIOS.IN</h1>
+              </HoverText>
+              <span ref={lineMail} className="absolute left-0 bottom-0 h-[0.1vw] bg-white w-full origin-left scale-x-0" ></span>
+            </div>
+
+            <div className="overflow-hidden button">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                ref={button2}
+                className="relative cursor-pointer w-[100px] h-[35px] md:w-[120px] md:h-[41px] border border-white rounded-full font-[dbsharp] font-semibold overflow-hidden uppercase tracking-wider" >
+                <span ref={hoverFill2} className="absolute w-[30px] h-[30px] bg-white inset-0 rounded-full will-change-transform scale-0"></span>
+                <span ref={textHover2} className="relative z-10 text-[4vw] md:text-[2.5vw] lg:text-[2vw] xl:text-[1vw] text-white flex items-center justify-center gap-3 mix-blend-difference" >
+                  {menuOpen ? "Close" : "Menu"}{" "}
+                  <ArrowRight ref={arrow2} strokeWidth={2} className="-rotate-45" />{" "}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

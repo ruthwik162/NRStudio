@@ -1,9 +1,10 @@
 // src/assets/assets.js
-import mainbanner from "./mainbanner.jpg"
-import dev from "./dev.jpg"
-import { FaLinkedin, FaSquareInstagram, FaGithub } from "react-icons/fa"
-import { MdEmail } from "react-icons/md"
-import { CiPhone } from "react-icons/ci"
+import mainbanner from "./mainbanner.jpg";
+import dev from "./dev.jpg";
+import { FaLinkedin, FaInstagramSquare, FaGithub } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { CiPhone } from "react-icons/ci";
+
 
 import mockup from './MacBook_Mockup_2.jpg'
 import ruthwik from './ruthwik.jpg'
@@ -13,6 +14,8 @@ import varshit from './varshit.png'
 import mainbanner1 from './mainbanner.png'
 import processBanner from './processBanner.png'
 import twoBanner from './twoBanner.png'
+import mobileLogo from './mobileLogo.png'
+
 
 export const images = {
   mainbanner,
@@ -20,7 +23,8 @@ export const images = {
   mockup,
   mainbanner1,
   processBanner,
-  twoBanner
+  twoBanner,
+  mobileLogo
 }
 
 export const profile =[
@@ -60,7 +64,7 @@ export const links = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/m.n.ruthwik/",
-    icon: FaSquareInstagram,
+    icon: FaInstagramSquare,
   },
   {
     name: "Github",

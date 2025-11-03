@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ReactLenis } from "@studio-freight/react-lenis"
 import { images } from "@/public/assets/assets";
 import TextY from "../Components/TextY";
@@ -8,8 +8,9 @@ import { ArrowDown } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import Footer from "../Components/Footer";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const Page = () => {
 
@@ -57,7 +58,7 @@ const Page = () => {
     useGSAP(() => {
         const cards = gsap.utils.toArray(".cards");
 
-        gsap.set(cards, { transformOrigin: "center top", scale: 1,force3D: true });
+        gsap.set(cards, { transformOrigin: "center top", scale: 1, force3D: true });
 
         cards.forEach((card, i) => {
             const tl = gsap.timeline({
@@ -86,11 +87,10 @@ const Page = () => {
                     onUpdate: (self) => {
                         const progress = self.progress;
                         const scale = 1 - progress * 0.15;
-                        const afterOpacity = progress;
 
                         gsap.set(card, {
                             scale: scale,
-                            "afterOpacity": afterOpacity,
+                            force3D: true,
                         })
                     }
                 })
@@ -100,10 +100,15 @@ const Page = () => {
         });
     }, { scope: containerRef });
 
+    useEffect(() => {
+        document.fonts.ready.then(() => {
+        });
+    }, []);
+
     return (
         <ReactLenis root>
 
-            <div className="w-full min-h-screen overflow-x-hidden bg-white text-black  mx-auto">
+            <div className="w-full min-h-screen overflow-hidden bg-white text-black  mx-auto">
 
                 <section className="w-full min-h-screen px-[2vw] md:mt-[5vw] mt-[10vw]   ">
                     <div className="grid grid-cols-1 w-full  md:grid-cols-12 gap-4 pt-[10vw] md:pt-[5vw]">
@@ -193,7 +198,7 @@ const Page = () => {
                                     </h1>
                                 </div>
 
-                                <img src={stage.bg} alt={stage.title} className=" w-full h-[300px] md:h-[490px] object-cover mix-blend-normal object-center" />
+                                <img src={stage.bg} alt={stage.title} className=" w-full h-[300px] md:h-[450px] object-cover mix-blend-normal object-center" />
 
                                 <div className="relative z-10 mix-blend-difference mt-[2vw] text-start max-w-2xl">
                                     <TextY>
@@ -206,10 +211,8 @@ const Page = () => {
                         </div>
                     ))}
                 </section>
-                <section className="w-full min-h-screen px-[2vw]">
-                    <div className="grid md:grid-cols-12    ">
-
-                    </div>
+                <section className="w-full min-h-screen md:h-screen">
+                    <Footer />
                 </section>
 
             </div>
