@@ -43,7 +43,7 @@ const Footer = () => {
     <footer className="w-full min-h-screen md:h-screen overflow-hidden bg-white py-[2vw] px-[2vw] border-t border-black/10">
       <div className="grid md:grid-cols-12 grid-cols-1 gap-4 md:mt-[10vw] border-t border-black/70 xl:mt-[2vw] pt-[2vw] mt-[2vw]">
         {/* Left Logo */}
-        <div className="w-full  md:h-[450px] xl:h-[540px] md:col-start-1  md:col-span-3 overflow-hidden">
+        <div className="w-full  md:h-[450px] xl:h-[450px] md:col-start-1  md:col-span-3 overflow-hidden">
           <img
             src={images.mobileLogo.src}
             className="w-full h-full object-center image object-cover"
@@ -107,7 +107,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Line */}
-      <div className="w-full flex flex-col md:flex-row justify-between items-center  text-black/50 text-[3vw] md:text-[0.9vw] font-[PPNeueMontreal]">
+      <div className="w-full flex flex-col md:flex-row justify-between items-center  text-black/50 text-[3vw] md:text-[0.9vw] font-bold font-[PPNeueMontreal]">
         <p>© {new Date().getFullYear()} NR Studio. All rights reserved.</p>
         <p>Designed & Developed by NR Studio Team</p>
       </div>

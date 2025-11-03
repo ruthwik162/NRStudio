@@ -116,7 +116,7 @@ export default function Page() {
 
     // Initial states
     gsap.set(".img", { scale: 1, filter: "blur(0px)", willChange: "transform, filter" });
-    gsap.set(".img2", { opacity: 0, scale: 0.8, willChange: "transform, opacity", force3D: true });
+    gsap.set(".img2", { opacity: 0, scale: 0.9, willChange: "transform, opacity", force3D: true });
     gsap.set(filter,{opacity:0,force3D:true})
 
     // Hover Enter
@@ -135,9 +135,9 @@ export default function Page() {
         force3D:true
       })
       gsap.to(".img2", {
-        scale: 1.4,
+        scale: 1.2,
         opacity: 1,
-        duration: 0.4,
+        duration: 0.6,
         ease: "expo.inOut",
         force3D: true,
       });
@@ -159,9 +159,9 @@ export default function Page() {
         force3D:true
       })
       gsap.to(".img2", {
-        scale: 0.8,
+        scale: 0.9,
         opacity: 0,
-        duration: 0.4,
+        duration: 0.6,
         ease: "expo.inOut",
         force3D: true,
       });
@@ -314,7 +314,7 @@ export default function Page() {
                   {/* Overlay Image */}
                   <img
                     src={images.mobileLogo.src}
-                    className="img2 absolute top-1/2 left-1/2 w-[220px] h-[450px] md:w-[320px] md:h-[480px] object-cover -translate-x-1/2 -translate-y-1/2 object-contain pointer-events-none"
+                    className="img2 absolute top-1/2 left-1/2 w-[220px] h-[450px] md:w-[320px] md:h-[450px] object-cover -translate-x-1/2 -translate-y-1/2 object-contain pointer-events-none"
                     alt="NR Studios Logo"
                     style={{
                       transformOrigin: "center center",

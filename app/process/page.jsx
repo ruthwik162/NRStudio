@@ -187,7 +187,7 @@ const Page = () => {
 
                             <div className="md:col-start-1 pt-[5vw] md:col-span-2">
                                 <h1 className="text-white font-[dbsharp] mix-blend-difference uppercase tracking-tight xl:text-[6vw] lg:text-[8vw] md:text-[9vw] text-[10vw] leading-[8vw] mb-6">
-                                    ({index + 1})
+                                    [{index + 1}]
                                 </h1>
                             </div>
 
