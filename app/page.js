@@ -162,7 +162,7 @@ export default function Page() {
         scale: 0.9,
         opacity: 0,
         duration: 0.6,
-        ease: "expo.inOut",
+        ease: "power3.out",
         force3D: true,
       });
     };
@@ -252,7 +252,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="w-full min-h-screen px-[5vw] md:px-[2vw] pt-[7vw]">
+        <section className="w-full min-h-screen px-[5vw]  md:px-[2vw] pt-[7vw]">
           <div className="overflow-hidden xl:text-[8vw] text-[12vw] leading-[11vw] lg:text-[8vw] lg:leading-[7.5vw] md:w-[75%] xl:leading-[7vw] uppercase">
             <h1
               style={{ fontStretch: "85%" }}
@@ -262,7 +262,7 @@ export default function Page() {
             </h1>
           </div>
 
-          <div className="grid md:grid-cols-12 grid-cols-1 gap-4 pt-[5vw] w-full h-full">
+          <div className="grid md:grid-cols-12 tracking-tight grid-cols-1 gap-4 pt-[5vw] w-full h-full">
             <div className="w-full h-full col-start-1 md:col-span-5 xl:col-span-4">
               <div className="overflow-hidden xl:text-[1.4vw] text-[4vw] mt-[5vw] md:mt-[2vw] leading-[4vw] text-white/70 lg:text-[2.5vw] md:text-[3vw] md:leading-[3vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:mt-[3vw]">
                 <TextY>

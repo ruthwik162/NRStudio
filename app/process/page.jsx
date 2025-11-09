@@ -110,14 +110,14 @@ const Page = () => {
 
             <div className="w-full min-h-screen overflow-hidden bg-white text-black  mx-auto">
 
-                <section className="w-full min-h-screen px-[2vw] md:mt-[5vw] mt-[10vw]   ">
-                    <div className="grid grid-cols-1 w-full  md:grid-cols-12 gap-4 pt-[10vw] md:pt-[5vw]">
+                <section className="w-full min-h-screen px-[5vw] md:px-[2vw] md:mt-[5vw] mt-[10vw]   ">
+                    <div className="grid grid-cols-1 w-full  md:grid-cols-12 gap-4 pt-[10vw] md:pt-[1vw]">
                         <div className=" md:col-span-3 md:col-start-1">
-                            <h1 sty className="xl:text-[1.5vw] xl:leading-[2vw] lg:text-[2vw] lg:leading-[2vw] md:text-[2.5vw] md:leading-[3vw] text-[8vw] font-radon uppercase font-bold ">(Our Process)</h1>
+                            <h1 sty className="xl:text-[1.5vw] xl:leading-[2vw] lg:text-[2vw] lg:leading-[2vw] md:text-[2.5vw] md:leading-[3vw] text-[5vw] font-radon uppercase font-bold ">(Our Process)</h1>
                         </div>
                         <div className=" md:col-span-7 md:col-start-8 font-[PPNeueMontreal] font-bold w-full ">
                             <TextY>
-                                <p className="text-[7vw] tracking-tight xl:leading-[3.2vw] xl:text-[3vw] lg:text-[3.5vw] lg:leading-[4vw] md:text-[4.5vw]   leading-[7vw] md:leading-[5vw]  text-black ">
+                                <p className="text-[7vw] tracking-tight xl:leading-[3.2vw] xl:text-[3vw] lg:text-[3.5vw] lg:leading-[4vw] md:text-[4.5vw]   leading-[7.5vw] md:leading-[5vw]  text-black ">
                                     We believe in building lasting partnerships —
                                     not just delivering projects.
                                     Every website we craft carries your story, your emotion, and your identity.
@@ -125,19 +125,19 @@ const Page = () => {
                             </TextY>
                         </div>
                     </div>
-                    <div className="grid grid-cols-6 md:grid-cols-12 w-full h-full gap-4 ">
-                        <div className="col-span-4 col-start-1 md:col-span-6 w-full h-[220px] md:h-[740px]">
+                    <div className="grid grid-cols-6 md:grid-cols-12 w-full h-full gap-4 mt-[5vw]   items-end justify-end md:items-start md:justify-start pt-[30vw] md:pt-[1vw] ">
+                        <div className="col-span-4 col-start-1 md:block hidden md:col-span-5 md:pt-0 pt-[10vw] w-full h-[220px] md:h-[380px]">
                             <img src={images.processBanner.src} className="w-full h-full object-right object-cover " alt="" />
                         </div>
-                        <div className="col-start-4 col-span-3 md:col-start-8 md:col-span-4 w-full h-[150px] md:h-[400px]">
-                            <img src={images.mainbanner1.src} className="w-full h-full object-cover object-right " alt="" />
+                        <div className="col-start-3 col-span-4 md:hidden block md:col-start-8 md:col-span-4 w-full h-[150px] md:h-[400px]">
+                            <img src={images.processBanner.src} className="w-full h-full object-cover object-right " alt="" />
                         </div>
                     </div>
                 </section>
 
                 {/* Section 2 */}
 
-                <section className="w-screen h-full md:h-screen overflow-hidden mt-[2vw]">
+                <section className="w-screen h-full px-[5vw] md:px-[2vw] md:h-screen overflow-hidden  mt-[2vw]">
                     <div className="w-full h-full object-cover object-bottom relative overflow-hidden">
                         <h1 className="text-white xl:text-[8vw] xl:leading-[7vw] text-[8vw] leading-[7vw]  mix-blend-difference font-[PPNeueMontreal] font-semibold absolute top-6  left-6 w-[60%] z-10">View Our 7 Stage Process </h1>
                         <ParallaxImage src={images.twoBanner.src} />
@@ -145,7 +145,7 @@ const Page = () => {
                     </div>
 
                 </section>
-                <section className="w-full min-h-screen px-[2vw] flex items-start justify-start   overflow-hidden">
+                <section className="w-full min-h-screen px-[5vw] md:px-[2vw]  flex items-start justify-start   overflow-hidden">
                     <div className=" pt-[3vw] ">
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2   items-start">
                             <div className="md:col-start-1 md:col-span-4 border-t border-gray-100/50 pt-[1vw] ">
@@ -170,7 +170,7 @@ const Page = () => {
                                 </div>
 
                             </div>
-                            <div className="md:col-start-5 md:col-span-8  ">
+                            <div className="md:col-start-5 md:col-span-8   ">
                                 <div className="w-full h-[500px] md:h-[1000px] overflow-hidden bg-red-600 rounded-sm">
                                     <img className="w-full h-full object-center object-cover  rounded-sm" loading="lazy-loading" src={images.mainbanner1.src} alt="" />
                                 </div>
@@ -178,11 +178,11 @@ const Page = () => {
                         </div>
                     </div>
                 </section>
-                <section ref={containerRef} className="w-screen  bg-black h-full">
+                <section ref={containerRef} className="w-screen min-h-screen bg-white md:px-[5vw] mt-[5vw] px-[5vw] h-full">
                     {processList.map((stage, index) => (
                         <div
                             key={index}
-                            className="w-screen min-h-screen md:h-screen cards bg-white font-[PPNeueMontreal] p-[10vw] md:p-[10vw] xl:p-[5vw] grid grid-cols-1 md:grid-cols-12 gap-4 relative  items-start justify-start overflow-hidden"
+                            className="w-full drop-shadow-2xl min-h-screen md:h-screen cards mt-[5vw] rounded-md bg-gray-300 font-[PPNeueMontreal] p-[10vw] md:p-[10vw] xl:p-[5vw] grid grid-cols-1 md:grid-cols-12 gap-4 relative  items-start justify-start overflow-hidden"
                         >
 
                             <div className="md:col-start-1 pt-[5vw] md:col-span-2">
@@ -191,16 +191,18 @@ const Page = () => {
                                 </h1>
                             </div>
 
-                            <div className="md:col-start-4 md:col-span-7 gap-3 items-start justify-start">
+                            <div className="md:col-start-4  md:col-span-7 gap-3 pt-[5vw] items-start justify-start">
                                 <div className="">
-                                    <h1 className="text-white  mix-blend-difference uppercase tracking-tight xl:text-[3vw] xl:leading-[3vw] font-bold lg:text-[5vw] lg:leading-[5vw] md:text-[7vw] md:leading-[7vw] text-[8vw] leading-[8vw] mb-3">
+                                    <h1 className="text-white border-b  mix-blend-difference uppercase tracking-tight xl:text-[3vw] xl:leading-[3vw] font-bold lg:text-[5vw] lg:leading-[5vw] md:text-[7vw] md:leading-[7vw] text-[8vw] leading-[8vw] mb-1">
                                         {stage.title}
                                     </h1>
                                 </div>
-
-                                <img src={stage.bg} alt={stage.title} className=" w-full h-[300px] md:h-[450px] object-cover mix-blend-normal object-center" />
-
-                                <div className="relative z-10 mix-blend-difference mt-[2vw] text-start max-w-2xl">
+                            </div>
+                            <div className="md:col-start-6 md:col-span-4 gap-3  items-start justify-start">
+                                <img src={stage.bg} alt={stage.title} className=" w-full h-[300px] rounded-md md:h-[350px] object-cover mix-blend-normal object-center" />
+                            </div>
+                            <div className="md:col-start-4 md:col-span-6 gap-3 items-start justify-start">
+                                <div className="relative  mix-blend-difference mt-[2vw] text-start ">
                                     <TextY>
                                         <p className="text-white  font-[MyFont2]  xl:text-[1.5vw] xl:leading-[1.5vw] lg:text-[1.8vw] lg:leading-[1.8vw] md:leading-[2vw] md:text-[2vw] text-[4vw] leading-[4vw]">
                                             {stage.desc}

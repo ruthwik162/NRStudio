@@ -71,6 +71,14 @@
 }
 
 @font-face {
+  font-family: 'sigana';
+  src: url('/fonts/Sigana_Condensed.otf') format('otf');
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
   font-family: 'Alliance-neueregular';
   src: url('/fonts/alliance-neueregular.woff2') format('woff2');
   font-style: normal;

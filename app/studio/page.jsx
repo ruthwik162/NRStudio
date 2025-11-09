@@ -96,6 +96,7 @@ const Page = () => {
           scale: 1,
           duration: 0.8,
           ease: "power4.out",
+
           force3D: true
         })
       }
@@ -113,6 +114,7 @@ const Page = () => {
         duration: 1.8,
         stagger: 0.018,
         ease: "power4.inOut",
+        force3D: true,
         scrollTrigger: {
           trigger: textRef.current,
           start: "top 95%",
@@ -134,6 +136,7 @@ const Page = () => {
         delay: 1,
         duration: 2,
         ease: "power4.inOut",
+        force3D: true
       })
 
 
@@ -143,6 +146,19 @@ const Page = () => {
   });
 
   useGSAP(() => {
+
+    gsap.set(container.current, { backgroundColor: "#16181B" });
+
+    gsap.to(container.current, {
+      backgroundColor: "white",
+      scrollTrigger: {
+        trigger: container.current, 
+        start: "top top",
+        end: "top 20%",
+        scrub: true,
+      },
+    });
+
     const btn = button.current
     const dot = hoverFill.current
     const text = textHover.current
@@ -210,6 +226,8 @@ const Page = () => {
       })
     }
 
+
+
     btn.addEventListener("mousemove", moveHandler)
     btn.addEventListener("mouseenter", enterHandler)
     btn.addEventListener("mouseleave", leaveHandler)
@@ -273,8 +291,8 @@ const Page = () => {
   return (
     <ReactLenis root>
       {/* Full Page Section */}
-      <div className="bg-[#16181B] text-white w-full min-h-screen  mx-auto overflow-hidden">
-        <section className="bg-white  text-black w-screen h-full pt-[15vw] py-[10vw] px-[2vw] flex items-center justify-center ">
+      <div className="bg-[#16181B] text-white w-full min-h-screen   mx-auto overflow-hidden">
+        <section className="bg-white  text-black w-screen min-h-screen pt-[15vw] py-[10vw] px-[2vw] flex items-center justify-center ">
           <div className="w-full  py-10  overflow-hidden">
             <div className="flex flex-col gap-[1vw]">
 
@@ -300,8 +318,8 @@ const Page = () => {
           </div>
         </section>
 
-        <section className="w-full px-[2vw] min-h-screen   mt-[5vw] flex items-start justify-start  overflow-hidden">
-          <div className="  ">
+        <section className="w-full md:px-[2vw] px-[5vw] min-h-screen   mt-[5vw] flex items-start justify-start  overflow-hidden">
+          <div className="text-balance  ">
             <h1 style={{ fontStretch: "75%" }} className="text-[12vw] leading-[10vw] uppercase sm:text-5xl lg:text-6xl xl:text-[7vw] font-bold font-[dbsharp] ">
               About Us
             </h1>
@@ -313,7 +331,7 @@ const Page = () => {
               </div>
               <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
                 <TextY>
-                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
                     At <span style={{ fontStretch: "75%" }} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we bring ideas to life through powerful, responsive, and beautifully designed websites. We're a creative web studio passionate about crafting digital experiences that not only look great but also deliver real results.
                   </p>
                 </TextY>
@@ -327,7 +345,7 @@ const Page = () => {
               </div>
               <div className="md:col-start-6 md:col-span-6  md:border-b border-gray-200">
                 <TextY>
-                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
                     We belive in the power of creativity and technology to transform ideas into impactful digital experiences. we focus more on the emotion and story telling experience to connect, we belive that every innovation need right and toughtul impactfull team and that we are the right to choose
                   </p>
                 </TextY>
@@ -341,7 +359,7 @@ const Page = () => {
               </div>
               <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
                 <TextY>
-                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
                     Our team of skilled designers, developers, and strategists work closely with clients to understand their vision and goals. We believe that a great website is more than just aesthetics; it's about creating an engaging user experience that drives conversions and builds brand loyalty.
                   </p>
                 </TextY>
@@ -355,7 +373,7 @@ const Page = () => {
               </div>
               <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
                 <TextY>
-                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
                     We collaborate with startups, brands, and creators to craft tailor-made web solutions that tell their story and drive real impact.
                     From clean portfolio sites to complete web applications, we build with purpose, precision, and passion.
                   </p>
@@ -378,18 +396,18 @@ const Page = () => {
 
 
 
-        <section className="w-full min-h-screen px-[2vw] flex items-start justify-start   overflow-hidden">
-          <div className=" pt-[3vw] ">
+        <section className="w-full min-h-screen px-[5vw] md:px-[2vw] flex items-start justify-start   overflow-hidden">
+          <div className="pt-[5vw] md:pt-[3vw] ">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2   items-start">
               <div className="md:col-start-1 md:col-span-4 border-t border-gray-100/50 pt-[1vw] ">
                 <h1 className=""><span style={{ fontStretch: "75%" }} className="text-white font-semibold tracking-tight  xl:text-[4vw] text-[7vw] leading-[6vw] md:text-[4vw] md:leading-[3vw] lg:text-[3vw] lg:leading-[2.5vw] font-[dbsharp]">NR Studios</span></h1>
-                <h1 style={{ fontStretch: "75%" }} className=" sm:text-lg md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] font-[Alliance-meduim] text-[4vw] leading-[4vw] 2xl:text-[1.7vw]  text-white/80 xl:leading-[2vw]">
+                <h1 style={{ fontStretch: "75%" }} className=" sm:text-lg md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] font-[Alliance-meduim] text-[4vw] leading-[4.5vw] 2xl:text-[1.7vw]  text-white/80 xl:leading-[2vw]">
                   Is a Young Talent Crafting Knowledge
                 </h1>
 
 
                 <TextY>
-                  <p className="text-base sm:text-lg pt-[5vw] font-[MyFont2] text-[5vw] max-w-md leading-[4vw]  md:text-[3vw] md:leading-[3vw] lg:text-[2vw] lg:leading-[2vw] xl:text-[1.8vw] text-white/80 xl:leading-[2vw]    ">
+                  <p className="text-base tracking-tighter sm:text-lg pt-[5vw] font-[MyFont2] text-[4vw] max-w-md leading-[4.5vw]  md:text-[3vw] md:leading-[3vw] lg:text-[2vw] lg:leading-[2vw] xl:text-[1.8vw] text-white/80 xl:leading-[2vw]    ">
                     Our 7-stage Agile flow blends design principles with development precision. We build in cycles of clarity and collaboration — keeping your vision alive at every step.
                   </p>
                 </TextY>
@@ -424,7 +442,7 @@ const Page = () => {
         </section>
 
         {/* What we Do?? */}
-        <section className="w-full min-h-screen px-[2vw] ">
+        <section className="w-full min-h-screen px-[5vw] md:px-[2vw] ">
           <div className="overflow-hidden   mt-[5vw]">
             <h1 style={{ fontStretch: "75%" }} className="2xl:text-[8vw] xl:text-[7vw] text-[8vw] uppercase text-end  font-[dbsharp] font-bold lg:text-[4vw]">What We Do??</h1>
           </div>
@@ -435,7 +453,7 @@ const Page = () => {
             </div>
             <div className="md:col-start-6 md:col-span-6 border-b border-gray-200 ">
               <TextY>
-                <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4vw] leading-[4vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4vw] leading-[4vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
                   We craft digital experiences that combine creativity with precision. From designing intuitive UI/UX and developing custom web solutions to deploying scalable full-stack applications, we turn ideas into high-performing, visually stunning websites that drive real results.
                 </p>
               </TextY>
@@ -459,7 +477,7 @@ const Page = () => {
         </section>
 
         {/* Why Us?? */}
-        <section className="w-full px-[2vw] min-h-screen ">
+        <section className="w-full px-[5vw] md:px-[2vw] min-h-screen ">
           <div className="overflow-hidden  px-[2vw] mt-[5vw]">
             <h1 style={{ fontStretch: "75%" }} className="2xl:text-[4vw] uppercase text-end  font-[dbsharp] font-bold text-[8vw] lg:text-[4vw]">Why Us??</h1>
           </div>
@@ -470,7 +488,7 @@ const Page = () => {
             </div>
             <div className="md:col-start-1 md:col-span-6 border-b border-gray-200 ">
               <TextY>
-                <p className="text-base sm:text-lg font-[MyFont]  pb-[1vw] text-[5vw] leading-[5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                <p className="text-base tracking-tighter sm:text-lg font-[MyFont]  pb-[1vw] text-[5vw] leading-[5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
                   At our studio, creativity meets precision. We’re a team of passionate developers and designers who believe every digital experience should feel as good as it looks. From crafting seamless UI/UX flows to building powerful full-stack applications, we handle every step with care — design, development, testing, and deployment.
                 </p>
               </TextY>
@@ -482,7 +500,7 @@ const Page = () => {
             <h1>Meet Our Member Behind Every Pixel</h1>
           </div>
 
-          <div ref={container} className=" relative w-full h-[400vh] flex items-center justify-center flex-col bg-white  px-[2vw]">
+          <div ref={container} className=" relative w-full h-[400vh] flex items-center justify-center flex-col   px-[2vw]">
             {profile.map((member, ind) => (
               <div
                 key={ind}
@@ -501,7 +519,7 @@ const Page = () => {
                     <h2 style={{ fontStretch: "75%" }} className="text-[8vw] leading-[8vw] md:text-[7vw] lg:text-[5vw] lg:leading-[5vw] xl:text-[4vw] xl:leading-[4vw] font-bold font-[dbsharp] mb-4">{member.name}</h2>
                     <p className="text-[4vw] md:text-[1.2vw] text-white font-[Helvetica] mb-4 flex items-center justify-center">{member.role} <ArrowRight className="-rotate-45" /></p>
                     <TextY>
-                      <p className="text-[3.5vw] leading-[3.5vw] md:text-[1.4vw] md:leading-[1.5vw] font-[Helvetica] text-white/60">{member.about}</p>
+                      <p className="text-[3.5vw]  leading-[3.5vw] md:text-[1.4vw] md:leading-[1.5vw] font-[PPNeueMontreal] font-semibold text-white/60">{member.about}</p>
                     </TextY>
                   </div>
                 </div>
