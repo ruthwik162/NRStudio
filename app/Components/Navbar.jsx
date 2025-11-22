@@ -184,7 +184,7 @@ const Navbar = () => {
       {/* ✅ Top Navbar */}
       <div
         style={{ fontFamily: "MyFont2" }}
-        className="w-full fixed top-0 text-white mix-blend-difference left-0 p-5 md:px-8 xl:px-10 z-50 "
+        className="w-full fixed top-0 text-white mix-blend-difference left-0 p-5 md:px-[2vw] xl:px-[2vw] z-50 "
       >
         <div className="flex justify-between items-center border-b pb-1">
           <div

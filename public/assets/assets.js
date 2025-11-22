@@ -15,6 +15,8 @@ import mainbanner1 from './mainbanner.png'
 import processBanner from './processBanner.png'
 import twoBanner from './twoBanner.png'
 import mobileLogo from './mobileLogo.png'
+import studioipad from './Studio_Ipad.png'
+import feviconico from './feviconico.png'
 
 
 export const images = {
@@ -24,7 +26,9 @@ export const images = {
   mainbanner1,
   processBanner,
   twoBanner,
-  mobileLogo
+  mobileLogo,
+  studioipad,
+  feviconico
 }
 
 export const profile =[
