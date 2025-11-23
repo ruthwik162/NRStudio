@@ -8,11 +8,65 @@ import { images } from "../public/assets/assets"
 import { SplitText } from "gsap/SplitText"
 import Footer from "./Components/Footer"
 import TextY from "./Components/TextY"
+import { ArrowRight } from "lucide-react"
+import Accordion from "./Components/utils/Accordion"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText)
 
 export default function Page() {
   const mainRef = useRef(null)
+  const introRef = useRef(null);
+  const arrow1Ref = useRef(null);
+  const introRef2 = useRef(null);
+  const arrow2Ref = useRef(null);
+
+  useGSAP(() => {
+    const intro = introRef.current;
+    const arrow1 = arrow1Ref.current;
+
+    const intro2 = introRef2.current;
+    const arrow2 = arrow2Ref.current;
+
+    gsap.set(arrow1, { transformOrigin: "50% 50%", willChange:"transform" });
+    gsap.set(arrow2, { transformOrigin: "50% 50%", willChange:"transform" });
+
+    intro.onmouseenter = () => {
+      gsap.to(arrow1, {
+        rotate: 0,
+        duration: 1.1,
+        ease: "power4.inOut",
+        force3D: true,
+      });
+    };
+
+    intro.onmouseleave = () => {
+      gsap.to(arrow1, {
+        rotate: -135,
+        duration: 0.8,
+        ease: "power4.inOut",
+        force3D: true,
+      });
+    };
+
+    intro2.onmouseenter = () => {
+      gsap.to(arrow2, {
+        rotate: 0,
+        duration: 1.1,
+        ease: "power4.inOut",
+        force3D: true,
+      });
+    };
+
+    intro2.onmouseleave = () => {
+      gsap.to(arrow2, {
+        rotate: -135,
+        duration: 0.8,
+        ease: "power4.inOut",
+        force3D: true,
+      });
+    };
+  });
+
 
 
   useGSAP(() => {
@@ -64,10 +118,10 @@ export default function Page() {
   return (
     <ReactLenis root>
       <div ref={mainRef} className="w-full overflow-hidden min-h-screen main  bg-[#16181B] text-white">
-        <section className="w-full min-h-screen relative  md:px-[2vw] bg-white px-[5vw]">
+        <section className="w-full lg:h-screen xl:min-h-screen relative  md:px-[2vw] bg-white px-[5vw]">
           {/* Hero Text */}
-          <div className="overflow-hidden w-full h-full grid grid-cols-6 md:grid-cols-12 gap-4 md:gap-8 pt-[20vw] xl:pt-[5vw] ">
-            <div className="border-wrapper col-start-1 md:col-start-1 col-span-4 md:col-span-4 flex flex-col text-black overflow-hidden">
+          <div className="overflow-hidden w-full h-full grid grid-cols-6 md:grid-cols-12  gap-4 md:gap-6 xl:gap-8 pt-[20vw] md:pt-[10vw] xl:pt-[5vw] ">
+            <div className="border-wrapper col-start-1 md:col-start-1 col-span-4 md:col-span-7 lg:col-start-1 lg:col-span-4 xl:col-span-4 flex flex-col text-black overflow-hidden">
               {/* Hero Text */}
               <div className="overflow-hidden xl:text-[3vw] xl:leading-[3vw] 2xl:text-[3vw]  font-[PPNeueMontreal] font-semibold lg:text-[3vw] 2xl:leading-[3vw] lg:leading-[3vw] md:text-[5vw] text-[6vw] leading-[6vw] md:leading-[5vw] ">
                 <h1 className="textH ">
@@ -86,84 +140,99 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="w-full h-full justify-end items-end pt-[5vw] xl:pt-[8vw] text-black col-start-1 md:col-start-6  col-span-3 md:col-span-3">
+            <div className="w-full h-full justify-end items-end pt-[5vw] md:mt-0 lg:pt-[8vw] xl:pt-[8vw] text-black col-start-1 lg:col-start-5 lg:col-span-3 md:col-start-4 md:col-span-4 xl:col-start-6  col-span-3 xl:col-span-3">
               <div className="overflow-hidden">
-                <p className="textH xl:text-[5vw] text-[7vw] leading-[7vw] xl:leading-[4.5vw] xl:pt-[10vw] lg:text-[5vw] font-[PPNeueMontreal] font-bold lg:leading-[5.5vw]">
+                <p className="textH xl:text-[5vw] text-[7vw] leading-[7vw] xl:leading-[4.5vw]  md:pt-0 xl:pt-[9vw] lg:pt-[16vw] lg:text-[5vw] font-[PPNeueMontreal] font-bold lg:leading-[5.5vw]">
                   2025©
                 </p>
               </div>
             </div>
-            <div className="w-full md:col-start-9 col-start-3 mix-blend-normal md:col-span-4 col-span-4 overflow-hidden bg-red-500 h-full">
+            <div className="w-full md:col-start-8 xl:col-start-9 col-start-3 mix-blend-normal md:col-span-5 xl:col-span-4 col-span-4 overflow-hidden  h-full">
               <img
                 className="w-full h-full object-center object-cover overflow-hidden"
                 src={images.studioipad.src}  // image path
                 alt="description"
                 width={500}             // required
                 height={500}            // required
+                loading="lazy"
               />
 
             </div>
-            <div className="w-full col-start-1 overflow-hidden text-black pt-[2vw] col-span-3">
-              <p className="xl:text-[1.2vw] xl:leading-[1.3vw] text-[4vw] leading-[4vw] textH">
+            <div className="w-full col-start-1 lg:pt-[8vw] xl:pt-0 overflow-hidden text-black pt-[2vw] col-span-3 md:col-span-5 xl:col-span-3">
+              <p className="xl:text-[1.2vw] lg:text-[2vw] lg:leading-[2vw] xl:leading-[1.3vw] text-[4vw] leading-[4vw] textH">
                 We turn your vision into meaningful digital experiences.
               </p>
             </div>
-            <div className="w-full col-start-3 md:col-start-6 overflow-hidden text-black pt-[2vw] col-span-4 md:col-span-3">
-              <p className="xl:text-[1.2vw] xl:leading-[1.3vw] text-[4vw] leading-[4vw] textH">
+            <div className="w-full col-start-3 md:col-start-8 xl:pt-0 lg:pt-[8vw] xl:col-start-6 overflow-hidden text-black pt-[2vw] col-span-4 md:col-span-5 xl:col-span-3">
+              <p className="xl:text-[1.2vw] lg:text-[2vw] lg:leading-[2vw] xl:leading-[1.3vw] text-[4vw] leading-[4vw] textH">
                 Crafting intuitive, human-focused interfaces — from pixels to backend logic
               </p>
             </div>
-            <div className="w-full col-start-3 md:col-start-11 text-black pt-[2vw] overflow-hidden col-span-4 md:col-span-2">
+            <div className="w-full col-start-3 md:col-start-5 xl:col-start-11 lg:pt-[8vw] xl:pt-0 text-black pt-[2vw] overflow-hidden col-span-4 md:col-span-4 xl:col-span-2">
               <h1 className="xl:text-[2.2vw] text-[5.5vw] textH font-[PPNeueMontreal] font-bold justify-start ">Asthetic</h1>
             </div>
-            <div className="w-full col-start-2 md:col-start-6 text-black relative col-span-4 md:col-span-6">
-              <h1 className="xl:text-[9.2vw]  lg:text-[9vw] text-[13.5vw] tracking-tight font-[PPNeueMontreal] font-bold uppercase">ELEGANCE*</h1>
-              <h1 className="xl:text-[2.2vw] text-[4vw] absolute bottom-0 right-0 font-[PPNeueMontreal] font-bold ">Speaks</h1>
+            <div className="w-full col-start-2 lg:col-start-5 lg:col-span-7 md:col-start-3 xl:col-start-6 text-black relative col-span-4 md:col-span-6">
+              <h1 className="xl:text-[9.2vw]  lg:text-[11vw] md:text-[14vw] text-[13.5vw] tracking-tight font-[PPNeueMontreal] font-bold uppercase">ELEGANCE*</h1>
+              <h1 className="xl:text-[2.2vw] text-[4vw] lg:text-[4vw] absolute bottom-0 right-0 font-[PPNeueMontreal] font-bold ">Speaks</h1>
             </div>
           </div>
         </section>
 
-        <section className="w-full min-h-screen bg-white px-[5vw] md:px-[2vw]  ">
-          <div className="overflow-hidden pt-[10vw] xl:pt-[5vw]">
-            <h1 className="uppercase xl:text-[5vw] text-[8vw] font-bold font-[PPNeueMontreal] text-black">Intro</h1>
+
+
+
+
+        <section className="w-full lg:min-h-screen xl:min-h-screen  bg-white px-[5vw] md:px-[2vw]  ">
+          <div ref={introRef} className="overflow-hidden pt-[20vw] md:pt-[8vw] lg:pt-[15vw] xl:pt-[5vw]">
+            <h1 className="uppercase xl:text-[5vw] text-[8vw] font-bold flex items-center justify-start gap-2 md:items-center md:justify-start font-[PPNeueMontreal] text-black"><span>Intro</span><img ref={arrow1Ref} src={images.arrow.src} className="inline-block w-[15%] h-[15%] md:w-[5%] md:h-[5%] border rounded-full p-1 md:p-2 -rotate-135" /></h1>
           </div>
-          <div className="grid grid-cols-6 md:grid-cols-12 gap-4 md:gap-8 ">
-            <div className="md:col-start-1 col-start-5 col-span-2 overflow-hidden pt-[5vw]">
+          <div className="grid grid-cols-6 md:grid-cols-12 gap-4 md:gap-5 lg:gap-6 xl:gap-8 ">
+            <div className="md:col-start-1 md:col-span-2 xl:col-start-1 xl:col-span-2 lg:col-start-1 lg:col-span-2 col-start-5 col-span-2 overflow-hidden pt-[5vw]">
               <img src={images.feviconico.src} className="w-full h-full object-center object-cover" />
             </div>
-            <div className="md:col-start-4 col-start-1 col-span-5 md:col-span-4 overflow-hidden pt-[5vw]">
+            <div className="md:col-start-4 xl:col-start-4 xl:col-span-4 lg:col-start-4 lg:col-span-6 col-start-1 col-span-5 md:col-span-4 overflow-hidden pt-[5vw]">
               <TextY>
-                <p className="xl:text-[1.2vw] text-[4vw] leading-[4.5vw]  w-full xl:leading-[1.2vw] font-[Helvetica]  text-black">
+                <p className="xl:text-[1.2vw] lg:text-[2.5vw] md:text-[2vw] md:leading-[2.5vw]  lg:leading-[2.5vw] text-[4vw] leading-[4.5vw]  w-full xl:leading-[1.2vw] font-[Helvetica]  text-black">
                   At our approach, we transform ideas into powerful digital experiences. Whether we build your website from the ground up or elevate your existing design, every decision we make is intentional
                 </p>
               </TextY>
             </div>
-            <div className="md:col-start-9 md:col-span-3 col-start-4 col-span-3 overflow-hidden pt-[5vw]">
+            <div className="md:col-start-9 lg:col-start-7 xl:col-start-9 xl:col-span-4 md:col-span-4 lg:col-span-4 col-start-4 col-span-3 overflow-hidden pt-[5vw]">
               <TextY>
-                <h1 className="xl:text-[5vw] xl:leading-[5vw] text-[11vw] font-[PPNeueMontreal] font-bold text-black">Elevate</h1>
-                <h2 className="xl:text-[2vw] text-[5vw] -mt-[2vw] md:-mt-[1vw] font-[PPNeueMontreal] font-bold text-black">Designs</h2>
+                <h1 className="xl:text-[5vw] xl:leading-[5vw] md:text-[9vw] md:leading-[8vw] lg:text-[8vw] lg:leading-[vw] text-[11vw] font-[PPNeueMontreal] font-bold text-black">Elevate</h1>
+                <h2 className="xl:text-[2vw] text-[5vw] lg:text-[3vw] -mt-[2vw] md:-mt-[2vw] xl:-mt-[1vw] font-[PPNeueMontreal] font-bold text-black">Designs</h2>
               </TextY>
             </div>
-            <div className="md:col-start-1 col-start-1 col-span-2 overflow-hidden pt-[5vw]">
-              <h1 className="xl:text-[4vw] text-[7vw] text2025 font-[Helvetica] text-black font-bold">2025©</h1>
+            <div className="md:col-start-1 lg:hidden md:pt-0 pt-[25vw] xl:block md:hidden lg:col-start-1 lg:col-span-2 col-start-1 col-span-2 items-start justify-start overflow-hidden ">
+              <h1 className="xl:text-[4vw] text-[7vw] md:text-[4vw] lg:text-[4vw] text2025 text-start font-[Helvetica] text-black font-bold">2025©</h1>
             </div>
-            <div className="md:col-start-9 col-span-4 overflow-hidden pt-[5vw]">
+            <div className="md:col-start-9 xl:col-start-9  xl:col-span-4 lg:col-start-7 lg:col-span-6 col-span-4 overflow-hidden pt-[5vw]">
               <TextY>
-                <p className="xl:text-[1.2vw] xl:leading-[1.2vw] text-[4vw] leading-[4.5vw] font-[Helvetica]  text-black">
+                <p className="xl:text-[1.2vw]  lg:text-[2.5vw] md:text-[2vw] md:leading-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] text-[4vw] leading-[4.5vw] font-[Helvetica]  text-black">
                   At our approach, we transform ideas into powerful digital experiences. Whether we build your website from the ground up or elevate your existing design, every decision we make is intentional
                 </p>
               </TextY>
+            </div>
+
+            <div className="md:col-start-1 md:col-span-4 hidden md:block lg:block xl:hidden lg:col-start-1 lg:col-span-2 col-start-1 col-span-2 items-start justify-start overflow-hidden pt-[5vw]">
+              <h1 className="xl:text-[4vw] text-[7vw] md:text-[7vw] lg:text-[4vw] text2025 text-start font-[Helvetica] text-black font-bold">2025©</h1>
             </div>
           </div>
         </section>
 
         <section className="min-h-screen w-full md:px-[2vw] px-[5vw] bg-white">
-          <div className="overflow-hidden pt-[5vw]">
-            <h1 className="uppercase xl:text-[5vw] font-bold font-[PPNeueMontreal] text-black">Services</h1>
+          <div ref={introRef2} className="overflow-hidden md:pt-[10vw] pt-[20vw] py-[2vw]  w-full">
+            <h1 className="uppercase xl:text-[4vw] text-[8vw] font-bold flex items-center justify-start gap-2 md:items-center md:justify-start font-[PPNeueMontreal] text-black"><span>Services</span><img ref={arrow2Ref} src={images.arrow.src} className="inline-block w-[15%] h-[15%] md:w-[5%] md:h-[5%] border rounded-full p-1 md:p-2 -rotate-135" />
+            </h1>
+          </div>
+          <div className="grid md:grid-cols-12 grid-cols-6 gap-4 md:gap-8 pt-[15vw] md:pt-[5vw] pb-[10vw]">
+            <div className="md:col-start-5 md:col-span-8 col-start-1 col-span-6">
+              <Accordion />
+            </div>
           </div>
         </section>
 
-        <section className="w-full min-h-screen md:h-screen">
+        <section className="w-full min-h-screen bg-white md:h-screen">
           <Footer />
         </section>
 

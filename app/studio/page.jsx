@@ -22,6 +22,11 @@ const Page = () => {
   const arrow = useRef(null)
   const textRef = useRef(null)
   const container = useRef(null);
+  const text1Ref = useRef(null)
+  const text2Ref = useRef(null)
+  const text3Ref = useRef(null)
+  const text4Ref = useRef(null)
+
   useGSAP(() => {
 
     document.fonts.ready.then(() => {
@@ -152,7 +157,7 @@ const Page = () => {
     gsap.to(container.current, {
       backgroundColor: "white",
       scrollTrigger: {
-        trigger: container.current, 
+        trigger: container.current,
         start: "top top",
         end: "top 20%",
         scrub: true,
@@ -240,6 +245,31 @@ const Page = () => {
   }, [])
 
   useGSAP(() => {
+    // Initial positions
+    gsap.set([text1Ref.current, text3Ref.current], { x: 300, willChange: "transform" });
+    gsap.set( text4Ref.current, { x: -300, willChange: "transform" });
+    gsap.set(text2Ref.current, { x: -100, willChange: "transform" });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: text1Ref.current,
+        start: "top 85%",
+        end: "top -80%",
+        scrub: 1.5,
+        ease: "none",
+      }
+    });
+
+    tl.to(text1Ref.current, { x: -300, ease: "none" }, 0)
+      .to(text2Ref.current, { x: 100, ease: "none" }, 0)
+      .to(text3Ref.current, { x: -250, ease: "none" }, 0)
+      .to(text4Ref.current, { x: 300, ease: "none" }, 0);
+  });
+
+
+
+  useGSAP(() => {
+
     const cards = gsap.utils.toArray(".cards");
 
     gsap.set(cards, { transformOrigin: "center top", scale: 1 });
@@ -310,7 +340,7 @@ const Page = () => {
                   <h1 style={{ fontStretch: "75%" }} className="text-[11vw] will-change-transform leading-[11vw] textA xl:text-[8vw] 2xl:text-[7.5vw] md:text-[8vw] md:leading-[7vw] lg:text-[8vw] lg:leading-[7.5vw] xl:leading-[6vw] font-[dbsharp] font-bold " > A self-owned</h1>
                 </div>
                 <div className="overflow-hidden">
-                  <h1 style={{ fontStretch: "75%" }} className="text-[8vw] will-change-transform leading-[7vw] textA xl:text-[8vw] md:text-[8vw] 2xl:text-[7.5vw] xl:leading-[6vw] md:leading-[7vw] lg:text-[7vw] lg:leading-[6vw] font-[dbsharp] font-bold " > well-driven creative web Agency </h1>
+                  <h1 style={{ fontStretch: "75%" }} className="text-[8vw] will-change-transform leading-[7vw] textA xl:text-[8vw] md:text-[8vw] 2xl:text-[7.5vw] xl:leading-[6vw] md:leading-[7vw] lg:text-[7vw] lg:leading-[6vw] font-[dbsharp] font-bold " > well-driven creative web Studio </h1>
                 </div>
               </div>
 
@@ -325,27 +355,21 @@ const Page = () => {
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2  mt-[3vw] items-start">
-              <div className="md:col-start-3 md:col-span-2  md:w-full w-[30%] border-t border-gray-200  ">
-                <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-end font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1vw]  text-white/80 xl:leading-[2vw]"> (Our Vision)
-                </h1>
-              </div>
-              <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
+              
+              <div className="md:col-start-1 md:col-span-6  ">
                 <TextY>
-                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
-                    At <span style={{ fontStretch: "75%" }} className="text-white font-bold font-[dbsharp]">NR Studios</span>, we bring ideas to life through powerful, responsive, and beautifully designed websites. We're a creative web studio passionate about crafting digital experiences that not only look great but also deliver real results.
+                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
+                    At <span style={{ fontStretch: "75%" }} className="text-red-500 font-bold tracking-wide font-[dbsharp]">NR Studios</span>, we bring ideas to life through powerful, responsive, and beautifully designed websites. We're a creative web studio passionate about crafting digital experiences that not only look great but also deliver real results.
                   </p>
                 </TextY>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-              <div className="md:col-start-3 md:col-span-2 md:w-full w-[30%]  border-t  border-gray-200 ">
-                <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg md:text-[3vw] pt-[1vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-end font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1vw]  text-white/80 xl:leading-[2vw]"> (Our Philosophy)
-                </h1>
-              </div>
-              <div className="md:col-start-6 md:col-span-6  md:border-b border-gray-200">
+              
+              <div className="md:col-start-1 md:col-span-6  ">
                 <TextY>
-                  <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  <p className="w-full sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
                     We belive in the power of creativity and technology to transform ideas into impactful digital experiences. we focus more on the emotion and story telling experience to connect, we belive that every innovation need right and toughtul impactfull team and that we are the right to choose
                   </p>
                 </TextY>
@@ -353,13 +377,10 @@ const Page = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-              <div className="md:col-start-3 md:col-span-2  border-t md:w-full w-[30%] border-gray-200 ">
-                <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-end font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1vw]  text-white/80 xl:leading-[2vw]"> (Our Team)
-                </h1>
-              </div>
-              <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
+              
+              <div className="md:col-start-1 md:col-span-6  ">
                 <TextY>
-                  <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
                     Our team of skilled designers, developers, and strategists work closely with clients to understand their vision and goals. We believe that a great website is more than just aesthetics; it's about creating an engaging user experience that drives conversions and builds brand loyalty.
                   </p>
                 </TextY>
@@ -367,13 +388,10 @@ const Page = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-              <div className="md:col-start-3 md:col-span-2 md:w-full w-[30%]  border-t border-gray-200">
-                <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-end font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1vw]  text-white/80 xl:leading-[2vw]"> [Our Work]
-                </h1>
-              </div>
-              <div className="md:col-start-6 md:col-span-6 md:border-b border-gray-200 ">
+              
+              <div className="md:col-start-1 md:col-span-7  ">
                 <TextY>
-                  <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                  <p className="text-base w-full sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
                     We collaborate with startups, brands, and creators to craft tailor-made web solutions that tell their story and drive real impact.
                     From clean portfolio sites to complete web applications, we build with purpose, precision, and passion.
                   </p>
@@ -384,15 +402,37 @@ const Page = () => {
         </section>
 
 
-        <div className="w-full px-[2vw] xl:text-[8vw] text-[11vw] xl:leading-[7vw] mt-[10vw]  font-[dbsharp] text-white/50 leading-[10vw] uppercase font-bold text-center">
-          <div className="overflow-hidden">
-            <h1 ref={textRef} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
-              We don’t just  chase <span style={{ fontStretch: "85%" }} className="text-white">attention</span> —
-              we craft with <span style={{ fontStretch: "85%" }} className="text-white">principles</span> and
-              <span style={{ fontStretch: "85%" }} className="text-white">perfection</span>.
-            </h1>
+        <section className="w-full h-screen  flex flex-col items-center justify-center ">
+          <div className="w-full  xl:text-[8vw] text-[11vw] xl:leading-[7vw] mt-[10vw] -rotate-2 font-[dbsharp] text-white/50 leading-[10vw] uppercase font-bold text-center">
+            <div className="overflow-hidden">
+              <h1 ref={text1Ref} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
+                We don’t just  chase
+              </h1>
+            </div>
           </div>
-        </div>
+          <div className="w-full  xl:text-[8vw] text-[11vw] xl:leading-[7vw] -rotate-2 font-[dbsharp] text-white/50 leading-[10vw] uppercase font-bold text-center">
+            <div className="overflow-hidden">
+              <h1 ref={text2Ref} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
+                <span style={{ fontStretch: "85%" }} className="text-white">attention</span> —we craft
+              </h1>
+            </div>
+          </div>
+          <div className="w-full  xl:text-[8vw] text-[11vw] xl:leading-[7vw] -rotate-2  font-[dbsharp] text-white/50 leading-[10vw] uppercase font-bold text-center">
+            <div className="overflow-hidden">
+              <h1 ref={text3Ref} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
+                with <span style={{ fontStretch: "85%" }} className="text-white">principles</span>
+              </h1>
+            </div>
+          </div>
+          <div className="w-full  xl:text-[8vw] text-[11vw] xl:leading-[7vw] -rotate-2  font-[dbsharp] text-white/50 leading-[10vw] uppercase font-bold text-center">
+            <div className="overflow-hidden">
+              <h1 ref={text4Ref} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
+                and
+                <span style={{ fontStretch: "85%" }} className="text-white">perfection</span>.
+              </h1>
+            </div>
+          </div>
+        </section>
 
 
 
@@ -407,7 +447,7 @@ const Page = () => {
 
 
                 <TextY>
-                  <p className="text-base tracking-tighter sm:text-lg pt-[5vw] font-[MyFont2] text-[4vw] max-w-md leading-[4.5vw]  md:text-[3vw] md:leading-[3vw] lg:text-[2vw] lg:leading-[2vw] xl:text-[1.8vw] text-white/80 xl:leading-[2vw]    ">
+                  <p className="text-base tracking-tighter sm:text-lg pt-[5vw] font-[MyFont2] text-[4vw] max-w-md leading-[4.5vw]  md:text-[3vw] md:leading-[3vw] lg:text-[2vw] lg:leading-[2vw] xl:text-[1.5vw] text-white/80 xl:leading-[2vw]    ">
                     Our 7-stage Agile flow blends design principles with development precision. We build in cycles of clarity and collaboration — keeping your vision alive at every step.
                   </p>
                 </TextY>
@@ -433,7 +473,7 @@ const Page = () => {
                 </div>
               </div>
               <div className="md:col-start-5 md:col-span-8  ">
-                <div ref={imageDiv} className="w-full h-[500px] md:h-[1000px] overflow-hidden bg-red-600 rounded-sm">
+                <div ref={imageDiv} className="w-full h-full overflow-hidden bg-red-600 rounded-sm">
                   <img ref={mainbanner} className="w-full h-full object-center object-cover  rounded-sm" loading="lazy-loading" src={images.mainbanner1.src} alt="" />
                 </div>
               </div>

@@ -17,6 +17,7 @@ import twoBanner from './twoBanner.png'
 import mobileLogo from './mobileLogo.png'
 import studioipad from './Studio_Ipad.png'
 import feviconico from './feviconico.png'
+import arrow from './Arrow_Down.png'
 
 
 export const images = {
@@ -28,7 +29,8 @@ export const images = {
   twoBanner,
   mobileLogo,
   studioipad,
-  feviconico
+  feviconico,
+  arrow
 }
 
 export const profile =[
