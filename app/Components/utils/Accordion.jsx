@@ -91,7 +91,7 @@ const AccordionItem = ({ index, title, content, isOpen, onClick }) => {
       <div ref={titleWrapperRef} className="overflow-hidden">
         <button
           onClick={onClick}
-          className="w-full flex justify-between items-center py-4 text-left xl:text-[1.5vw] font-[PPNeueMontreal] font-meduim text-[5vw] tracking-tight font-medium text-black"
+          className="w-full flex justify-between items-center py-4 text-left xl:text-[1.5vw] lg:text-[2.5vw] md:text-[3.5vw] font-[PPNeueMontreal] font-meduim text-[5vw] tracking-tight font-medium text-black"
         >
           {title}
 
@@ -107,20 +107,21 @@ const AccordionItem = ({ index, title, content, isOpen, onClick }) => {
       {/* Content */}
       <div
         ref={contentRef}
-        className="overflow-hidden opacity-0 h-0 text-black/70"
+        className="overflow-hidden opacity-0 h-0 "
       >
-        <div className="pb-4 leading-relaxed">
+        <div className="pb-4 text-black leading-relaxed">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3">
             {React.Children.map(content.props.children, (child, id) => (
               <div
                 key={id}
                 ref={(el) => (linksRef.current[id] = el)}
-                className="xl:text-[1vw] text-[4vw] flex items-center"
+                className="xl:text-[1vw] lg:text-[1.5vw] md:text-[2vw] text-[4vw] flex items-center"
               >
                 •&nbsp;{child}
                 <ArrowRight
-                  className="inline-block ml-2 -rotate-45 transition-all"
+                  className="inline-block ml-2 transition-all"
                   strokeWidth={1.1}
+                  rotate={-45}
                 />
               </div>
             ))}

@@ -65,6 +65,7 @@ const Page = () => {
                 scale: 0.9, // adjust scale
                 ease: "power3.out",
                 force3D: true,
+                opacity: 0.5,
                 scrollTrigger: {
                     trigger: card,
                     start: "top top",
@@ -83,6 +84,7 @@ const Page = () => {
                     trigger: cards[i + 1],
                     start: "top bottom",
                     end: "top top ",
+
                     force3D: true,
                     onUpdate: (self) => {
                         const progress = self.progress;
@@ -110,12 +112,12 @@ const Page = () => {
 
             <div className="w-full min-h-screen overflow-hidden bg-white text-black  mx-auto">
 
-                <section className="w-full min-h-screen px-[5vw] md:px-[2vw] md:mt-[5vw] mt-[10vw]   ">
+                <section className="w-full h-screen px-[5vw] md:px-[2vw] md:mt-[5vw] mt-[10vw]   ">
                     <div className="grid grid-cols-1 w-full  md:grid-cols-12 gap-4 pt-[10vw] md:pt-[1vw]">
                         <div className=" md:col-span-3 md:col-start-1">
                             <h1 sty className="xl:text-[1.5vw] xl:leading-[2vw] lg:text-[2vw] lg:leading-[2vw] md:text-[2.5vw] md:leading-[3vw] text-[5vw] font-radon uppercase font-bold ">(Our Process)</h1>
                         </div>
-                        <div className=" md:col-span-7 md:col-start-8 font-[PPNeueMontreal] font-bold w-full ">
+                        <div className=" md:col-span-6 md:col-start-7 font-[PPNeueMontreal] font-bold w-full ">
                             <TextY>
                                 <p className="text-[7vw] tracking-tight xl:leading-[3.2vw] xl:text-[3vw] lg:text-[3.5vw] lg:leading-[4vw] md:text-[4.5vw]   leading-[7.5vw] md:leading-[5vw]  text-black ">
                                     We believe in building lasting partnerships —
@@ -145,9 +147,9 @@ const Page = () => {
                     </div>
 
                 </section>
-                <section className="w-full min-h-screen px-[5vw] md:px-[2vw]  flex items-start justify-start   overflow-hidden">
-                    <div className=" pt-[3vw] ">
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2   items-start">
+                <section className="w-full min-h-screen px-[5vw] md:px-[2vw]   flex items-start justify-start   overflow-hidden">
+                    <div className=" pt-[3vw]  w-full ">
+                        <div className="grid grid-cols-1 md:grid-cols-12  gap-4 space-y-2   items-start">
                             <div className="md:col-start-1 md:col-span-4 border-t border-gray-100/50 pt-[1vw] ">
                                 <h1 className=""><span style={{ fontStretch: "75%" }} className="text-black font-semibold tracking-tight  xl:text-[4vw] text-[7vw] leading-[6vw] md:text-[4vw] md:leading-[3vw] lg:text-[3vw] lg:leading-[2.5vw] font-[dbsharp]">7 Stages</span></h1>
 
@@ -178,36 +180,46 @@ const Page = () => {
                         </div>
                     </div>
                 </section>
-                <section ref={containerRef} className="w-screen min-h-screen bg-white md:px-[5vw] mt-[5vw] px-[5vw] h-full">
+                <section ref={containerRef} className="w-screen min-h-screen py-[5vw] bg-white  mt-[5vw]  ">
                     {processList.map((stage, index) => (
                         <div
                             key={index}
-                            className="w-full drop-shadow-2xl min-h-screen md:h-screen cards mt-[5vw] rounded-md bg-gray-300 font-[PPNeueMontreal] p-[10vw] md:p-[10vw] xl:p-[5vw] grid grid-cols-1 md:grid-cols-12 gap-4 relative  items-start justify-start overflow-hidden"
+                            className="w-full  min-h-screen border-t-2 border-black md:h-screen cards mt-[5vw]  bg-white p-[2vw] font-[PPNeueMontreal]  grid grid-cols-1 md:grid-cols-12 gap-4 relative  items-start justify-start overflow-hidden"
                         >
 
-                            <div className="md:col-start-1 pt-[5vw] md:col-span-2">
+                            <div className="md:col-start-1 pt-[5vw] md:col-span-1">
                                 <h1 className="text-white font-[dbsharp] mix-blend-difference uppercase tracking-tight xl:text-[6vw] lg:text-[8vw] md:text-[9vw] text-[10vw] leading-[8vw] mb-6">
                                     [{index + 1}]
                                 </h1>
                             </div>
 
-                            <div className="md:col-start-4  md:col-span-7 gap-3 pt-[5vw] items-start justify-start">
+                            <div className="md:col-start-4  md:col-span-7  pt-[5vw] items-start justify-start">
                                 <div className="">
-                                    <h1 className="text-white border-b  mix-blend-difference uppercase tracking-tight xl:text-[3vw] xl:leading-[3vw] font-bold lg:text-[5vw] lg:leading-[5vw] md:text-[7vw] md:leading-[7vw] text-[8vw] leading-[8vw] mb-1">
+                                    <h1 className="text-white   mix-blend-difference uppercase tracking-tight xl:text-[3vw] xl:leading-[3vw] font-bold lg:text-[5vw] lg:leading-[5vw] md:text-[7vw] md:leading-[7vw] text-[8vw] leading-[8vw] mb-1">
                                         {stage.title}
                                     </h1>
                                 </div>
                             </div>
-                            <div className="md:col-start-6 md:col-span-4 gap-3  items-start justify-start">
-                                <img src={stage.bg} alt={stage.title} className=" w-full h-[300px] rounded-md md:h-[350px] object-cover mix-blend-normal object-center" />
+                            <div className="md:col-start-4 md:col-span-4 gap-3  items-start justify-start">
+                                <img src={stage.bg} alt={stage.title} className=" w-full h-full  object-cover mix-blend-normal object-center" />
                             </div>
-                            <div className="md:col-start-4 md:col-span-6 gap-3 items-start justify-start">
-                                <div className="relative  mix-blend-difference mt-[2vw] text-start ">
+                            <div className="md:col-start-9 md:col-span-4 gap-3 items-start justify-start">
+                                <div className="relative  mix-blend-difference  text-start ">
                                     <TextY>
                                         <p className="text-white  font-[MyFont2]  xl:text-[1.5vw] xl:leading-[1.5vw] lg:text-[1.8vw] lg:leading-[1.8vw] md:leading-[2vw] md:text-[2vw] text-[4vw] leading-[4vw]">
                                             {stage.desc}
                                         </p>
                                     </TextY>
+                                </div>
+                            </div>
+
+                            <div className="md:col-start-9 md:col-span-4 gap-3 items-start justify-start">
+                                <div className="relative  mix-blend-difference  text-start ">
+
+                                    <p className="text-white uppercase text-end  font-[MyFont2]  xl:text-[1.5vw] xl:leading-[1.5vw] lg:text-[1.8vw] lg:leading-[1.8vw] md:leading-[2vw] md:text-[2vw] text-[4vw] leading-[4vw]">
+                                        -Nr.Studio©
+                                    </p>
+
                                 </div>
                             </div>
                         </div>

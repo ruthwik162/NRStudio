@@ -10,6 +10,7 @@ import { ArrowBigRight, ArrowRight } from "lucide-react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import TextY from "../Components/TextY"
 import Footer from "../Components/Footer"
+import Accordion from "../Components/utils/Accordion"
 gsap.registerPlugin(SplitText, ScrollTrigger)
 
 const Page = () => {
@@ -26,6 +27,8 @@ const Page = () => {
   const text2Ref = useRef(null)
   const text3Ref = useRef(null)
   const text4Ref = useRef(null)
+  const team2Ref = useRef(null)
+  const team1Ref = useRef(null)
 
   useGSAP(() => {
 
@@ -247,7 +250,7 @@ const Page = () => {
   useGSAP(() => {
     // Initial positions
     gsap.set([text1Ref.current, text3Ref.current], { x: 300, willChange: "transform" });
-    gsap.set( text4Ref.current, { x: -300, willChange: "transform" });
+    gsap.set(text4Ref.current, { x: -300, willChange: "transform" });
     gsap.set(text2Ref.current, { x: -100, willChange: "transform" });
 
     const tl = gsap.timeline({
@@ -264,6 +267,25 @@ const Page = () => {
       .to(text2Ref.current, { x: 100, ease: "none" }, 0)
       .to(text3Ref.current, { x: -250, ease: "none" }, 0)
       .to(text4Ref.current, { x: 300, ease: "none" }, 0);
+
+
+
+    gsap.set(team1Ref.current, { x: -300, willChange: "transform" });
+    gsap.set(team2Ref.current, { x: 300, willChange: "transform" });
+
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: team1Ref.current,
+        start: "top 98%",
+        end: "top -80%",
+        scrub: 1.5,
+        ease: "none",
+      }
+    });
+
+    tl2.to(team1Ref.current, { x: 300, ease: "none" }, 0)
+      .to(team2Ref.current, { x: -300, ease: "none" }, 0)
+
   });
 
 
@@ -350,12 +372,12 @@ const Page = () => {
 
         <section className="w-full md:px-[2vw] px-[5vw] min-h-screen   mt-[5vw] flex items-start justify-start  overflow-hidden">
           <div className="text-balance  ">
-            <h1 style={{ fontStretch: "75%" }} className="text-[12vw] leading-[10vw] uppercase sm:text-5xl lg:text-6xl xl:text-[7vw] font-bold font-[dbsharp] ">
-              About Us
+            <h1 style={{ fontStretch: "75%" }} className="text-[12vw] leading-[10vw] uppercase sm:text-5xl lg:text-6xl xl:text-[7vw] font-bold flex items-center justify-start gap-2 font-[dbsharp] ">
+              About Us<img src={images.arrow.src} className="inline-block w-[15%] h-[15%] mix-blend-difference bg-white md:w-[7%] md:h-[7%] border rounded-full p-1 md:p-2 -rotate-135" />
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2  mt-[3vw] items-start">
-              
+
               <div className="md:col-start-1 md:col-span-6  ">
                 <TextY>
                   <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
@@ -366,7 +388,7 @@ const Page = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-              
+
               <div className="md:col-start-1 md:col-span-6  ">
                 <TextY>
                   <p className="w-full sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
@@ -377,7 +399,7 @@ const Page = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-              
+
               <div className="md:col-start-1 md:col-span-6  ">
                 <TextY>
                   <p className="text-base sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
@@ -388,7 +410,7 @@ const Page = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-              
+
               <div className="md:col-start-1 md:col-span-7  ">
                 <TextY>
                   <p className="text-base w-full sm:text-lg font-[MyFont] pb-[1vw] text-[4.5vw] leading-[4.5vw] md:text-[2.5vw] tracking-tighter md:leading-[3vw] lg:text-[2.2vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.3vw] text-white/80 2xl:text-[1.3vw] 2xl:leading-[1.5vw]   ">
@@ -439,7 +461,7 @@ const Page = () => {
         <section className="w-full min-h-screen px-[5vw] md:px-[2vw] flex items-start justify-start   overflow-hidden">
           <div className="pt-[5vw] md:pt-[3vw] ">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2   items-start">
-              <div className="md:col-start-1 md:col-span-4 border-t border-gray-100/50 pt-[1vw] ">
+              <div className="xl:col-start-1 xl:col-span-4 md:col-start-1 md:col-span-9 border-t border-gray-100/50 pt-[1vw] ">
                 <h1 className=""><span style={{ fontStretch: "75%" }} className="text-white font-semibold tracking-tight  xl:text-[4vw] text-[7vw] leading-[6vw] md:text-[4vw] md:leading-[3vw] lg:text-[3vw] lg:leading-[2.5vw] font-[dbsharp]">NR Studios</span></h1>
                 <h1 style={{ fontStretch: "75%" }} className=" sm:text-lg md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] font-[Alliance-meduim] text-[4vw] leading-[4.5vw] 2xl:text-[1.7vw]  text-white/80 xl:leading-[2vw]">
                   Is a Young Talent Crafting Knowledge
@@ -468,11 +490,11 @@ const Page = () => {
                 <div className="overflow-hidden md:mt-[2vw] mt-[5vw]">
                   <button ref={button} className="relative lg:w-[70%] md:w-[75%] w-[70%] xl:w-[50%] h-[45px] md:h-[51px]  border border-white rounded-full font-[dbsharp] font-semibold overflow-hidden uppercase tracking-wider">
                     <span ref={hoverFill} className="absolute w-[30px] h-[30px] bg-white inset-0 rounded-full will-change-transform scale-0"></span>
-                    <span ref={textHover} className="relative z-10 text-white flex items-center justify-center gap-3 mix-blend-difference">View Our Process <ArrowRight ref={arrow} strokeWidth={2} /> </span>
+                    <span ref={textHover} className="relative z-10 text-white flex items-center justify-center gap-3 mix-blend-difference"><a href="/process">View Our Process</a> <ArrowRight ref={arrow} strokeWidth={2} /> </span>
                   </button>
                 </div>
               </div>
-              <div className="md:col-start-5 md:col-span-8  ">
+              <div className="lg:col-start-5 lg:col-span-8 md:col-start-4 md:col-span-9 ">
                 <div ref={imageDiv} className="w-full h-full overflow-hidden bg-red-600 rounded-sm">
                   <img ref={mainbanner} className="w-full h-full object-center object-cover  rounded-sm" loading="lazy-loading" src={images.mainbanner1.src} alt="" />
                 </div>
@@ -484,89 +506,110 @@ const Page = () => {
         {/* What we Do?? */}
         <section className="w-full min-h-screen px-[5vw] md:px-[2vw] ">
           <div className="overflow-hidden   mt-[5vw]">
-            <h1 style={{ fontStretch: "75%" }} className="2xl:text-[8vw] xl:text-[7vw] text-[8vw] uppercase text-end  font-[dbsharp] font-bold lg:text-[4vw]">What We Do??</h1>
+            <h1 className="uppercase xl:text-[4vw] text-[8vw] font-bold flex items-center justify-start gap-2 md:items-center md:justify-start font-[PPNeueMontreal] text-white"><span>What we do?</span><img src={images.arrow.src} className="inline-block w-[15%] h-[15%] mix-blend-difference bg-white md:w-[5%] md:h-[5%] border rounded-full p-1 md:p-2 -rotate-135" />
+            </h1>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-            <div className="md:col-start-3 md:col-span-2 md:w-full ml-[60%] md:ml-0 w-[40%]  border-t border-gray-200">
-              <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-end font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1vw]  text-white/80 xl:leading-[2vw]"> [Aim]
+            <div className="md:col-start-6 md:col-span-2    ">
+              <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-start font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1.5vw]  text-white/80 xl:leading-[2vw]"> Aim
               </h1>
             </div>
-            <div className="md:col-start-6 md:col-span-6 border-b border-gray-200 ">
+            <div className="md:col-start-6 md:col-span-6 ">
               <TextY>
-                <p className="text-base tracking-tighter sm:text-lg font-[MyFont] pb-[1vw] text-[4vw] leading-[4vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.8vw] xl:text-[1.8vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                <p className="text-base tracking-tight sm:text-lg font-[Helvetica] pb-[1vw] text-[4vw] leading-[4vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.5vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.2vw] 2xl:leading-[1.5vw]   ">
                   We craft digital experiences that combine creativity with precision. From designing intuitive UI/UX and developing custom web solutions to deploying scalable full-stack applications, we turn ideas into high-performing, visually stunning websites that drive real results.
                 </p>
               </TextY>
             </div>
           </div>
-          <div className="overflow-hidden px-[2vw] grid grid-cols-1 md:grid-cols-12 gap-4 mt-[5vw]">
-            <h1 style={{ fontStretch: "75%" }} className="2xl:text-[4vw] text-start uppercase md:col-start-1 md:col-span-3 font-[dbsharp] font-bold tracking-wide text-[8vw] lg:text-[4vw]">Services.</h1>
-            <TextY>
-              <div className=" md:col-start-6 md:col-span-7 ">
-                {["Custom Website Design & Development", "Responsive and Mobile-First Websites", "E-commerce Solutions", "UI / UX Design ", "Website Maintenance & Optimization"].map((itm, idx) => (
-                  <div key={idx} className=" w-full">
-                    <div className="flex items-center border-b border-gray-100/50 py-1 md:py-2 justify-between">
-                      <h1 className="text-[4vw] lg:text-[1.8vw] md:text-[2vw] tracking-tight xl:text-[1.5vw]">{itm}</h1><ArrowRight className="-rotate-45 w-10 h-10 md:w-15 md:h-15" strokeWidth={0.5} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </TextY>
+          <div className="overflow-hidden md:pt-[10vw] pt-[20vw] py-[2vw]  w-full">
+            <h1 className="uppercase xl:text-[4vw] text-[8vw] font-bold flex items-center justify-start gap-2 md:items-center md:justify-start font-[PPNeueMontreal] text-white"><span>Services</span><img src={images.arrow.src} className="inline-block w-[15%] h-[15%] mix-blend-difference bg-white md:w-[5%] md:h-[5%] border rounded-full p-1 md:p-2 -rotate-135" />
+            </h1>
+          </div>
+          <div className="grid md:grid-cols-12 grid-cols-6 gap-4 md:gap-8 pt-[15vw] md:pt-[5vw] pb-[10vw]">
+            <div className="md:col-start-6 md:col-span-8 col-start-1 text-white col-span-6">
+              <Accordion />
+            </div>
           </div>
 
         </section>
 
         {/* Why Us?? */}
-        <section className="w-full px-[5vw] md:px-[2vw] min-h-screen ">
-          <div className="overflow-hidden  px-[2vw] mt-[5vw]">
-            <h1 style={{ fontStretch: "75%" }} className="2xl:text-[4vw] uppercase text-end  font-[dbsharp] font-bold text-[8vw] lg:text-[4vw]">Why Us??</h1>
+        <section className="w-full px-[5vw] md:px-[2vw] h-full ">
+          <div className="overflow-hidden   mt-[5vw]">
+            <h1 className="uppercase xl:text-[4vw] text-[8vw] font-bold flex items-center justify-start gap-2 md:items-center md:justify-start font-[PPNeueMontreal] text-white"><span>Why Us</span><img src={images.arrow.src} className="inline-block w-[15%] h-[15%] mix-blend-difference bg-white md:w-[5%] md:h-[5%] border rounded-full p-1 md:p-2 -rotate-135" />
+            </h1>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
-            <div className="md:col-start-9 md:col-span-2 w-[30%] md:w-full  border-t border-gray-200">
-              <h1 style={{ fontStretch: "75%" }} className="text-base sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-end font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[1vw]  text-white/80 xl:leading-[2vw]"> [Our Work]
+          <div className="grid grid-cols-6 md:grid-cols-12 gap-4 space-y-2 mt-[3vw]  items-start">
+            <div className="md:col-start-6 md:col-span-2 col-start-1 col-span-2 w-full  ">
+              <h1 style={{ fontStretch: "75%" }} className=" sm:text-lg pt-[1vw] md:text-[3vw] md:leading-[3vw] lg:text-[1.5vw] lg:leading-[2.5vw] text-start font-[Alliance-meduim] text-[5vw] leading-[5vw] xl:text-[2vw]  text-white/80 xl:leading-[2vw]"> Our Work
               </h1>
             </div>
-            <div className="md:col-start-1 md:col-span-6 border-b border-gray-200 ">
+            <div className="md:col-start-6 col-start-1 w-full col-span-6 md:col-span-6 ">
               <TextY>
-                <p className="text-base tracking-tighter sm:text-lg font-[MyFont]  pb-[1vw] text-[5vw] leading-[5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.6vw] 2xl:leading-[2vw]   ">
+                <p className="text-base  sm:text-lg font-[Helvetica]  pb-[1vw] text-[5vw] leading-[5vw] md:text-[3vw] md:leading-[3vw] lg:text-[2.5vw] lg:leading-[2.5vw] xl:leading-[1.2vw] xl:text-[1.2vw] text-white/80 2xl:text-[1.2vw] 2xl:leading-[1.5vw]   ">
                   At our studio, creativity meets precision. We’re a team of passionate developers and designers who believe every digital experience should feel as good as it looks. From crafting seamless UI/UX flows to building powerful full-stack applications, we handle every step with care — design, development, testing, and deployment.
                 </p>
               </TextY>
             </div>
           </div>
         </section>
-        <section className="w-screen min-h-screen flex flex-col  items-center justify-center relative overflow-hidden">
-          <div style={{ fontStretch: "75%" }} className="our text-center w-[80%] font-bold xl:text-[8vw] xl:leading-[7vw] md:leading-[9vw] lg:text-[8vw] md:text-[8vw] text-[10vw] font-[dbsharp] ">
-            <h1>Meet Our Member Behind Every Pixel</h1>
+
+        <section className="w-full h-full py-[5vw] md:px-[2vw] px-[5vw]">
+          <div className="w-full  xl:text-[8vw] pt-[10vw]  text-[13vw] xl:leading-[7vw] mt-[10vw] -rotate-2 font-[dbsharp] text-red-500 leading-[13vw] uppercase font-bold text-center">
+            <div className="overflow-hidden">
+              <h1 ref={team1Ref} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
+                Meet Our
+              </h1>
+            </div>
           </div>
-
-          <div ref={container} className=" relative w-full h-[400vh] flex items-center justify-center flex-col   px-[2vw]">
-            {profile.map((member, ind) => (
-              <div
-                key={ind}
-                className=" cards w-full h-screen flex items-center justify-center mx-auto md:justify-start "
-              >
-                <div className="w-full md:w-full xl:h-[90%] lg:h-[80%]  flex flex-col mt-[2vw] items-start mx-auto justify-start md:flex-row bg-[#16181B] p-2 md:p-3 rounded-[0.5vw] overflow-hidden">
-                  <div className="md:w-1/2 h-1/2 w-full md:h-full  overflow-hidden ">
-                    <img
-                      src={member.image?.src || "/fallback.jpg"}
-                      alt={member.name}
-                      className="w-full md:w-[75%] rounded-[0.5vw] h-full object-cover object-center"
-                    />
-                  </div>
-                  <div className="md:w-1/2 flex flex-col justify-start items-start px-[2vw] mt-[5vw]  pb-[2vw] text-white">
-
-                    <h2 style={{ fontStretch: "75%" }} className="text-[8vw] leading-[8vw] md:text-[7vw] lg:text-[5vw] lg:leading-[5vw] xl:text-[4vw] xl:leading-[4vw] font-bold font-[dbsharp] mb-4">{member.name}</h2>
-                    <p className="text-[4vw] md:text-[1.2vw] text-white font-[Helvetica] mb-4 flex items-center justify-center">{member.role} <ArrowRight className="-rotate-45" /></p>
-                    <TextY>
-                      <p className="text-[3.5vw]  leading-[3.5vw] md:text-[1.4vw] md:leading-[1.5vw] font-[PPNeueMontreal] font-semibold text-white/60">{member.about}</p>
-                    </TextY>
-                  </div>
-                </div>
+          <div className="w-full  xl:text-[8vw] text-[13vw] xl:leading-[7vw]  -rotate-2 font-[dbsharp] text-white leading-[13vw] uppercase font-bold text-center">
+            <div className="overflow-hidden">
+              <h1 ref={team2Ref} className=" overflow-hidden will-change-transform" style={{ fontStretch: "85%" }}>
+                Team Members
+              </h1>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-12 xl:gap-8 md:pt-[5vw] font-[PPNeueMontreal] font-bold pt-[10vw] gap-6 py-2 grid-cols-6">
+            <div className="md:col-start-1 col-start-1 col-span-3 w-full h-full md:col-span-2">
+              <img src={images.ruthwik.src} className="w-full h-full object-center object-cover" alt="" />
+              <div className="flex items-center justify-between">
+                <h1 className="xl:text-[1vw] text-[4vw] text-white mix-blend-difference">Nagaruthik</h1>
+                <h1 className="xl:text-[0.7vw] text-[2vw] text-white mix-blend-difference">Full-Stack Developer</h1>
               </div>
-            ))}
+            </div>
+            <div className="xl:col-start-3 col-start-4 col-span-3 xl:col-span-2">
+              <img src={images.varshit.src} className="w-full h-full object-center object-cover" alt="" />
+              <div className="flex items-center justify-between">
+                <h1 className="xl:text-[1vw] text-[4vw] text-white mix-blend-difference">Varshith</h1>
+                <h1 className="xl:text-[0.7vw] text-[2vw] text-white mix-blend-difference">Art Director</h1>
+              </div>
+            </div>
+            <div className="xl:col-start-9 col-start-3 col-span-3 xl:col-span-2">
+              <img src={images.Rohith.src} className="w-full h-full object-center object-cover" alt="" />
+              <div className="flex items-center justify-between">
+                <h1 className="xl:text-[1vw] text-[4vw] text-white mix-blend-difference">Naresh</h1>
+                <h1 className="xl:text-[0.7vw] text-[2vw] text-white mix-blend-difference">Ui/Ux Designer</h1>
+              </div>
+            </div>
+            <div className="xl:col-start-11 col-start-4 col-span-3 xl:col-span-2">
+              <img src={images.ruthwik.src} className="w-full h-full object-center object-cover" alt="" />
+              <div className="flex items-center justify-between">
+                <h1 className="xl:text-[1vw] text-[4vw] text-white mix-blend-difference">Vinod</h1>
+                <h1 className="xl:text-[0.7vw] text-[2vw] text-white mix-blend-difference">Ui Designer</h1>
+              </div>
+            </div>
+            <div className="xl:col-start-4 col-start-1 col-span-3 xl:col-span-2">
+              <img src={images.Rohith.src} className="w-full h-full object-center object-cover" alt="" />
+              <div className="flex items-center justify-between">
+                <h1 className="xl:text-[1vw] text-[4vw] text-white mix-blend-difference">Rohith</h1>
+                <h1 className="xl:text-[0.7vw] text-[2vw] text-white mix-blend-difference">Full-Stack Developer</h1>
+              </div>
+            </div>
           </div>
+
         </section>
+
         <section className="w-full min-h-screen overflow-hidden md:h-screen">
           <Footer />
         </section>

@@ -30,7 +30,10 @@ export const images = {
   mobileLogo,
   studioipad,
   feviconico,
-  arrow
+  arrow,
+  ruthwik,
+  Rohith,
+  varshit
 }
 
 export const profile =[

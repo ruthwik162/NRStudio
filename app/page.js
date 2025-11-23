@@ -19,16 +19,41 @@ export default function Page() {
   const arrow1Ref = useRef(null);
   const introRef2 = useRef(null);
   const arrow2Ref = useRef(null);
+  const studio = useRef(null);
+  const section2 = useRef(null);
+  const section1 = useRef(null);
+  
 
   useGSAP(() => {
+
+
+    gsap.set(studio.current, { overflow: "hidden", x: 600, willChange: "transform" });
+    gsap.to(studio.current, {
+      x: 0,
+      duration: 5,
+      ease: "power4.out",
+      force3D: true,
+      scrollTrigger: {
+        trigger: studio.current,
+        start: "top 90%",
+        end: "bottom -80%",
+        scrub: 2
+
+      }
+    })
+
+
+
+
+
     const intro = introRef.current;
     const arrow1 = arrow1Ref.current;
 
     const intro2 = introRef2.current;
     const arrow2 = arrow2Ref.current;
 
-    gsap.set(arrow1, { transformOrigin: "50% 50%", willChange:"transform" });
-    gsap.set(arrow2, { transformOrigin: "50% 50%", willChange:"transform" });
+    gsap.set(arrow1, { transformOrigin: "50% 50%", willChange: "transform" });
+    gsap.set(arrow2, { transformOrigin: "50% 50%", willChange: "transform" });
 
     intro.onmouseenter = () => {
       gsap.to(arrow1, {
@@ -118,7 +143,7 @@ export default function Page() {
   return (
     <ReactLenis root>
       <div ref={mainRef} className="w-full overflow-hidden min-h-screen main  bg-[#16181B] text-white">
-        <section className="w-full lg:h-screen xl:min-h-screen relative  md:px-[2vw] bg-white px-[5vw]">
+        <section ref={section1} className="w-full lg:h-screen xl:h-screen relative  md:px-[2vw] bg-white px-[5vw]">
           {/* Hero Text */}
           <div className="overflow-hidden w-full h-full grid grid-cols-6 md:grid-cols-12  gap-4 md:gap-6 xl:gap-8 pt-[20vw] md:pt-[10vw] xl:pt-[5vw] ">
             <div className="border-wrapper col-start-1 md:col-start-1 col-span-4 md:col-span-7 lg:col-start-1 lg:col-span-4 xl:col-span-4 flex flex-col text-black overflow-hidden">
@@ -182,7 +207,12 @@ export default function Page() {
 
 
 
-        <section className="w-full lg:min-h-screen xl:min-h-screen  bg-white px-[5vw] md:px-[2vw]  ">
+        <section ref={section2} className="w-full lg:min-h-screen xl:min-h-screen  bg-white px-[5vw] md:px-[2vw]  ">
+          <div className="overflow-hidden w-full">
+            <div ref={studio} className="w-full overflow-hidden">
+              <h1 className="text-black xl:text-[7vw] xl:leading-[6.5vw] font-[PPNeueMontreal] font-bold uppercase tracking-tighter">Nothing Real Studio©</h1>
+            </div>
+          </div>
           <div ref={introRef} className="overflow-hidden pt-[20vw] md:pt-[8vw] lg:pt-[15vw] xl:pt-[5vw]">
             <h1 className="uppercase xl:text-[5vw] text-[8vw] font-bold flex items-center justify-start gap-2 md:items-center md:justify-start font-[PPNeueMontreal] text-black"><span>Intro</span><img ref={arrow1Ref} src={images.arrow.src} className="inline-block w-[15%] h-[15%] md:w-[5%] md:h-[5%] border rounded-full p-1 md:p-2 -rotate-135" /></h1>
           </div>
@@ -226,7 +256,7 @@ export default function Page() {
             </h1>
           </div>
           <div className="grid md:grid-cols-12 grid-cols-6 gap-4 md:gap-8 pt-[15vw] md:pt-[5vw] pb-[10vw]">
-            <div className="md:col-start-5 md:col-span-8 col-start-1 col-span-6">
+            <div className="md:col-start-5 md:col-span-8  col-start-1 col-span-6">
               <Accordion />
             </div>
           </div>
